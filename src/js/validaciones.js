@@ -5,6 +5,7 @@ function iniciarEventos() {
     document.getElementById("apellidos").addEventListener("change", validarApellidos);
     document.getElementById("correo").addEventListener("change", validarCorreo);
     document.getElementById("pass").addEventListener("change", validarContrasena);
+    document.getElementById("terminos").addEventListener("change", validarCheck);
 }
 
 function validarNombre() {
@@ -38,4 +39,8 @@ function validarContrasena() {
 
 function validarCreedenciales() {
     
+}
+
+function validarCheck(){
+
 }

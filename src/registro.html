@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-teal-900 text-gray-800">
-    <div class="container mx-auto">
+    <div>
         <div class="flex flex-col justify-center items-center mt-16 mb-16 mx-auto" id="formulario-entrada">
             <div class="p-16 formulario-entrada" id="fondo-cabecera">
                 <h2 class="font-bold text-center text-white text-5xl">Resolución de incidencias</h2>
@@ -26,12 +26,14 @@
                         <input type="text" name="nombre" id="nombre"
                             class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                             placeholder="Tu nombre">
+                        <small id="nombreAlert" class="text-red-400 mt-1 pl-2">Escriba un nombre válido</small>
                     </div>
                     <div class="flex flex-col mb-5">
                         <label for="apellidos" class="font-semibold">Apellidos</label>
                         <input type="text" name="apellidos" id="apellidos"
                             class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                             placeholder="Tu apellido o apellidos">
+                        <small id="apellidopsAlert" class="text-red-400 mt-1 pl-2">Escriba un apellido válido</small>
                     </div>
                 </div>
                 <div class="flex flex-col mb-5">
@@ -39,14 +41,16 @@
                     <input type="email" name="correo" id="correo"
                         class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                         placeholder="Tu correo electrónico de educamadrid">
+                    <small id="correoAlert" class="text-red-400 mt-1 pl-2">Escriba un correo que pertenezca a educamadrid</small>
                 </div>
                 <div class="flex flex-col mb-5">
                     <label for="pass" class="font-semibold">Contraseña</label>
                     <input type="password" name="pass" id="pass"
                         class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                         placeholder="Tu contraseña">
+                    <small id="passAlert" class="text-red-400 mt-1 pl-2">Escriba una contraseña con mínimo una mayúscula y un número</small>
                 </div>
-                <div class="flex flex-col mb-5">
+                <div class="flex flex-col mb-4">
                     <label for="pass" class="font-semibold">Oficio</label>
                     <select name="oficio" id="oficio" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm">
                         <option value="">Profesor</option>
@@ -55,8 +59,12 @@
                         <option value="">Direccción</option>
                     </select>
                 </div>
+                <div class="flex items-baseline">
+                    <input type="checkbox" name="terminos" id="terminos"><label for="terminos" class="text-sm ml-2 text-gray-500">He leído y acepto la <a href="#" class="underline underline-offset-4">Política de privacidad</a>y el <a href="#" class="underline underline-offset-4">tratamiento de datos</a> por parte del IES Pío Baroja</label>
+                </div>
+                <small id="checkAlert" class="text-red-400 mt-1 pl-2">Debes aceptar los términos y coniciones además de la política de privacidad</small>
                 <input type="button" value="Crear cuenta"
-                    class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-3">
+                    class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-8">
             </form>
         </div>
     </div>
