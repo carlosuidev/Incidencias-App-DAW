@@ -1,0 +1,33 @@
+#fondo-cabecera{
+    background-image: url(../svg/robot_entrada.svg);
+    background-size: cover;
+}
+
+#formulario-entrada{
+    width: 640px;
+}
+
+@media (max-width: 1200px) {
+    #formulario-entrada, #fondo-cabecera{
+        width: 800px;
+    }
+}
+
+@media (max-width: 640px) {
+    body{
+        background-color: white !important;
+    }
+    #formulario-entrada, #fondo-cabecera{
+        width: 100%;
+    }
+
+    h2{
+        color: #2F5A59 !important;
+        font-size: 3rem !important;
+    }
+
+    #fondo-cabecera{
+        display: none;
+        background-image: none;
+    }
+}
