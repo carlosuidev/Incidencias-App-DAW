@@ -9,7 +9,7 @@ input[type=button]{
 }
 
 aside{
-    width: 220px;
+    width: 240px;
 }
 
 aside::-webkit-scrollbar{
@@ -23,7 +23,7 @@ aside::-webkit-scrollbar-thumb {
 }
 
 #main-content, nav{
-    margin-left: 220px;
+    margin-left: 240px;
 }
 
 @media (max-width: 640px) {
