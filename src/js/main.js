@@ -1,10 +1,13 @@
 addEventListener('DOMContentLoaded', eventos);
 
 function eventos() {
+    // REDIRECCIONES
     //document.getElementById("").addEventListener("click", irNuevaIncidencia);
     //document.getElementById("").addEventListener("click", irIncidenciasActivas);
     //document.getElementById("").addEventListener("click", irHistorial);
     document.getElementById("educamadridIncidencias").addEventListener("click", irEducamadrid);
+
+    // NAVBAR
 }
 
 function irNuevaIncidencia() {
