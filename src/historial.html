@@ -57,42 +57,64 @@
     </nav>
     <section id="main-content" class="p-8">
         <div class="container mx-auto">
-            <div class="bg-orange-900 rounded p-8 flex mb-5 shadow flex-col items-start justify-center">
+            <div class="bg-pink-900 rounded p-8 flex mb-5 shadow flex-col items-start justify-center">
                 <div class="flex items-center mb-4">
-                    <img src="svg/iconos/incidencias_activas_icon_lg.svg" class="border border-white rounded-full mr-3" width="32">
-                    <h2 class="text-white text-2xl font-bold">Incidencias activas</h2>
+                    <img src="svg/iconos/historial_icon_lg.svg" class="border border-white rounded-full mr-3" width="32">
+                    <h2 class="text-white text-2xl font-bold">Historial</h2>
                 </div>
-                <p class="pl-10 text-white opacity-75 lg:w-1/2 sm:w-full">Controla el estado de tus solicitudes y recibe respuestas por parte del equipo de administración.</p>
+                <p class="pl-10 text-white opacity-75 lg:w-1/2 sm:w-full">Revisa la información de todas las solicitudes que has realizado.</p>
             </div>
 
-            <div class="rounded p-8 grid lg:grid-cols-2 md:grid-cols-1 gap-5">
-                <div class="bg-white border rounded p-8 flex flex-col justify-between">
-                    <div>
-                        <p class="text-xs px-2 py-0.5 rounded-full w-fit mb-3 bg-yellow-500 text-white font-semibold">EN REVISIÓN</p>
-                        <h3 class="font-bold text-xl mb-2">Fallo en el interruptor</h3>
-                        <div class="mb-5 text-sm flex">
-                            <p class="font-bold mr-5">Fecha: <span class="font-normal">12/5/2023</span></p>
-                            <p class="font-bold mr-5">Planta: <span class="font-normal">2º</span></p>
-                            <p class="font-bold">Aula: <span class="font-normal">2.56</span></p>
-                        </div>
-                        <p class="mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit assumenda, dolorum, deleniti officia, fuga ipsum corrupti suscipit impedit temporibus veniam itaque molestias tempore excepturi repellendus esse libero iusto? Nesciunt, eos!</p>
+            <div class="rounded p-8 bg-white shadow">
+                <div class="flex flex-wrap">
+                    <div class="flex flex-col mr-5">
+                        <label for="buscar" class="text-sm font-semibold">Asunto:</label>
+                        <input type="text" name="buscar" id="buscar" placeholder="Ej: Ratón no funciona" class="bg-gray-100 p-2 rounded w-full border mt-2 border border-gray-300 text-sm">
                     </div>
-                    <input type="button" value="Confirmar" class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-3">
-                </div>
-                <div class="bg-white border rounded p-8 flex flex-col justify-between">
-                    <div>
-                        <p class="text-xs px-2 py-0.5 rounded-full w-fit mb-3 bg-green-500 text-white font-semibold">RESUELTA</p>
-                        <h3 class="font-bold text-xl mb-2">Fallo en el interruptor</h3>
-                        <div class="mb-5 text-sm flex">
-                            <p class="font-bold mr-5">Fecha: <span class="font-normal">12/5/2023</span></p>
-                            <p class="font-bold mr-5">Planta: <span class="font-normal">2º</span></p>
-                            <p class="font-bold">Aula: <span class="font-normal">2.56</span></p>
-                        </div>
-                        <p class="mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit assumenda, dolorum, deleniti officia, fuga ipsum corrupti suscipit impedit temporibus veniam itaque molestias tempore excepturi repellendus esse libero iusto? Nesciunt, eos!</p>
-                        <p class="mb-5 bg-green-100 font-semibold p-5 border rounded text-sm">Respuesta: <span class="font-normal text-italic">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nulla unde distinctio, dolorem atque quo, omnis hic in molestias dicta tenetur cupiditate, harum accusantium facilis adipisci cumque voluptates nostrum ex!</span></p>
+                    <div class="flex flex-col mr-5">
+                        <label for="fecha" class="text-sm font-semibold">Fecha:</label>
+                        <input type="date" name="fecha" id="fecha" class="bg-gray-100 p-2 rounded w-full border mt-2 border border-gray-300 text-sm">
                     </div>
-                    <input type="button" value="Confirmar" class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-3">
                 </div>
+                <hr class="my-5">
+                <table class="table-auto text-left rounded-xl w-full text-sm">
+                    <thead>
+                        <tr class="border bg-gray-200 text-xs">
+                            <th class="py-3 px-2">ASUNTO</th>
+                            <th class="py-3 px-2">PLANTA</th>
+                            <th class="py-3 px-2">AULA</th>
+                            <th class="py-3 px-2">FECHA</th>
+                            <th class="py-3 px-2">ESTADO</th>
+                            <th class="py-3 px-2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border border-white border-b-gray-300 hover:bg-gray-100">
+                            <td class="py-3 px-2 font-semibold">Problema en el teclado</td>
+                            <td class="py-3 px-2">1</td>
+                            <td class="py-3 px-2">1.45</td>
+                            <td class="py-3 px-2">12/05/2023</td>
+                            <td class="py-3 px-2">Resuelto</td>
+                            <td class="py-3 px-2"></td>
+                        </tr>
+                        <tr class="border border-white border-b-gray-300 hover:bg-gray-100">
+                            <td class="py-3 px-2 font-semibold">Problema en el teclado</td>
+                            <td class="py-3 px-2">1</td>
+                            <td class="py-3 px-2">1.45</td>
+                            <td class="py-3 px-2">12/05/2023</td>
+                            <td class="py-3 px-2">Resuelto</td>
+                            <td class="py-3 px-2"></td>
+                        </tr>
+                        <tr class="border border-white border-b-gray-300 hover:bg-gray-100">
+                            <td class="py-3 px-2 font-semibold">Problema en el teclado</td>
+                            <td class="py-3 px-2">1</td>
+                            <td class="py-3 px-2">1.45</td>
+                            <td class="py-3 px-2">12/05/2023</td>
+                            <td class="py-3 px-2">Resuelto</td>
+                            <td class="py-3 px-2"><button class="font-bold text-pink-700 hover:text-pink-900 duration-300">Ver más</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>

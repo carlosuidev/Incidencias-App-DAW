@@ -20,20 +20,20 @@
                 <h3 class=" font-bold text-3xl">Regístrate</h3>
                 <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Ya tienes cuenta? <a
                         href="index.html" class="font-semibold text-teal-800 hover:text-teal-900">Inicia sesión</a>.</p>
-                <div class="flex w-full gap-5">
-                    <div class="flex flex-col mb-5">
+                <div class="flex grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-5">
+                    <div class="lg:col-span-1 md:col-span-1 sm:col-span-3 flex flex-col mb-0.5">
                         <label for="nombre" class="font-semibold">Nombre</label>
                         <input type="text" name="nombre" id="nombre"
                             class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                             placeholder="Tu nombre">
-                        <small id="nombreAlert" class="text-red-400 mt-1 pl-2">Escriba un nombre válido</small>
+                        <small id="nombreAlert" class="hidden text-red-400 mt-1 pl-2">Usa un nombre válido</small>
                     </div>
-                    <div class="flex flex-col mb-5">
+                    <div class="lg:col-span-2 md:col-span-2 sm:col-span-3 flex flex-col mb-5">
                         <label for="apellidos" class="font-semibold">Apellidos</label>
                         <input type="text" name="apellidos" id="apellidos"
                             class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                             placeholder="Tu apellido o apellidos">
-                        <small id="apellidopsAlert" class="text-red-400 mt-1 pl-2">Escriba un apellido válido</small>
+                        <small id="apellidosAlert" class="hidden text-red-400 mt-1 pl-2">Escriba un apellido válido</small>
                     </div>
                 </div>
                 <div class="flex flex-col mb-5">
@@ -41,14 +41,14 @@
                     <input type="email" name="correo" id="correo"
                         class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                         placeholder="Tu correo electrónico de educamadrid">
-                    <small id="correoAlert" class="text-red-400 mt-1 pl-2">Escriba un correo que pertenezca a educamadrid</small>
+                    <small id="correoAlert" class="hidden text-red-400 mt-1 pl-2">Escriba un correo que pertenezca a educamadrid</small>
                 </div>
                 <div class="flex flex-col mb-5">
                     <label for="pass" class="font-semibold">Contraseña</label>
                     <input type="password" name="pass" id="pass"
                         class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                         placeholder="Tu contraseña">
-                    <small id="passAlert" class="text-red-400 mt-1 pl-2">Escriba una contraseña con mínimo una mayúscula y un número</small>
+                    <small id="passAlert" class="hidden text-red-400 mt-1 pl-2">Escriba una contraseña con mínimo una mayúscula y un número</small>
                 </div>
                 <div class="flex flex-col mb-4">
                     <label for="pass" class="font-semibold">Oficio</label>
@@ -62,13 +62,14 @@
                 <div class="flex items-baseline">
                     <input type="checkbox" name="terminos" id="terminos"><label for="terminos" class="text-sm ml-2 text-gray-500">He leído y acepto la <a href="#" class="underline underline-offset-4">Política de privacidad</a>y el <a href="#" class="underline underline-offset-4">tratamiento de datos</a> por parte del IES Pío Baroja</label>
                 </div>
-                <small id="checkAlert" class="text-red-400 mt-1 pl-2">Debes aceptar los términos y coniciones además de la política de privacidad</small>
-                <input type="button" value="Crear cuenta"
+                <small id="checkAlert" class="hidden text-red-400 mt-1 pl-2">Debes aceptar los términos y condiciones además de la política de privacidad</small>
+                <input type="button" id="registrar" value="Crear cuenta"
                     class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-8">
             </form>
         </div>
     </div>
     </div>
+    <script src="js/validaciones.js"></script>
 </body>
 
 </html>
