@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', iniciarEventos);
 
+const xhr = new XMLHttpRequest();
+
 function iniciarEventos() {
     document.getElementById("nombre").addEventListener("focusout", validarNombre);
     document.getElementById("apellidos").addEventListener("focusout", validarApellidos);
@@ -7,6 +9,26 @@ function iniciarEventos() {
     document.getElementById("pass").addEventListener("focusout", validarContrasena);
     document.getElementById("terminos").addEventListener("focusout", validarCheck);
     document.getElementById("registrar").addEventListener("click", registrarUsuario);
+    peticionDepartamentos();
+}
+
+function peticionDepartamentoss(){
+    xhr.onreadystatechange = mostrarDepartamentos;
+    xhr.open("POST", "../server/listar_departamentos.php", true);
+    xhr.send();
+}
+
+function mostrarDepartamentos(){
+    if(){
+        const departamento = document.getElementById("departamento");
+        let respuestaJson = 
+        
+        respuestaJson.forEach(elemento => {
+            const option = document.createElement("option");
+            option.setAttribute("value", elemento.departamento);
+            elemento.appendChild();
+        });
+    }
 }
 
 function validarNombre() {
