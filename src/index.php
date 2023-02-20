@@ -1,6 +1,19 @@
 <!doctype html>
 <html>
+<?php
 
+    include 'server/iniciar_sesion.php';
+    session_start();
+
+    if(isset($_POST)){
+        session_unset();
+        session_destroy();
+    }
+
+    if(){
+
+    }
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
