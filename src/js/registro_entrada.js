@@ -7,9 +7,9 @@ function iniciarEventos() {
     document.getElementById("apellidos").addEventListener("input", validarApellidos);
     document.getElementById("usuario").addEventListener("input", validarUsuario);
     document.getElementById("correo").addEventListener("input", validarCorreo);
-    document.getElementById("pass").addEventListener("input", validarContrasena);
+    document.getElementById("contrasena").addEventListener("input", validarContrasena);
     document.getElementById("terminos").addEventListener("input", validarCheck);
-    document.getElementById("registrar").addEventListener("click", registrarUsuario);
+    document.getElementById("registrar").addEventListener("click", peticionRegistrar);
     peticionDepartamentos();
 }
 
@@ -34,46 +34,53 @@ function mostrarDepartamentos(){
     }
 }
 
-function validarUsuario(){
+function validarUsuario() {
     let usuario = document.getElementById("usuario");
-    xhr.onreadystatechange = existeUsuario;
-    xhr.open("POST", "server/comprobar_usuario.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(`usuario=${usuario.value}`);
+    let usuarioAlert = document.getElementById("usuarioAlert");
+    if(/[a-zA-Z]\w{5,14}/.test(usuario.value)){
+        xhr.onreadystatechange = existeUsuario;
+        xhr.open("POST", "server/comprobar_usuario.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(`usuario=${usuario.value}`);
+        return true;
+    }else{
+        usuarioAlert.style.display = "block";
+        usuarioAlert.textContent = "Escriba un usuario válido";
+        usuario.style.border = "1px solid red";
+        return false;
+    }
+    
 }
 
 function existeUsuario(){
     if(xhr.readyState == 4 && xhr.status == 200){
-        const usuario = document.getElementById("usuario");
+        const usuarioAlert = document.getElementById("usuarioAlert");
         let respuesta = JSON.parse(xhr.responseText);
-        if(/^[a-zA-Z0-9]+$/.test(usuario.value)){
-            if(respuesta[0].msg == "existe"){
-                usuarioAlert.style.display = "block";
-                usuario.style.border = "1px solid red";
-            }else{
-                usuarioAlert.style.display = "none";
-                usuario.style.border = "1px solid green";
-            }
-        }else{
+        if(respuesta[0].msg == "existe"){
             usuarioAlert.style.display = "block";
             usuario.style.border = "1px solid red";
-            return 0;
+            usuarioAlert.textContent = "Ese usuario ya está en uso";
+            return true;
+        }else{
+            usuarioAlert.style.display = "none";
+            usuario.style.border = "1px solid green";
+            return false;
         }
     }
 }
-
 
 function validarNombre() {
     let nombre = document.getElementById("nombre");
     let nombreAlert = document.getElementById("nombreAlert");
 
-    if(/^[a-zA-Z ]+$/.test(nombre.value)){
+    if(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð -]{2,32}$/.test(nombre.value)){
         nombreAlert.style.display = "none";
         nombre.style.border = "1px solid green";
+        return true;
     }else{
         nombreAlert.style.display = "block";
         nombre.style.border = "1px solid red";
-        return 0;
+        return false;
     }
 }
 
@@ -81,55 +88,64 @@ function validarApellidos() {
     let apellidos = document.getElementById("apellidos");
     let apellidosAlert = document.getElementById("apellidosAlert");
 
-    if(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(apellidos.value)){
+    if(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(apellidos.value) && (apellidos.value).length<=100){
         apellidosAlert.style.display = "none";
         apellidos.style.border = "1px solid green";
+        return true;
     }else{
         apellidosAlert.style.display = "block";
         apellidos.style.border = "1px solid red";
-        return 0;
+        return false;
     }
 }
 
 function validarCorreo() {
     let correo = document.getElementById("correo");
-    xhr.onreadystatechange = existeCorreo;
-    xhr.open("POST", "server/comprobar_correo.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(`correo=${correo.value}`);
+    let correoAlert = document.getElementById("correoAlert");
+    if(/(\W|^)[\w.+\-]+@educa.madrid\.org(\W|$)/.test(correo.value) && (correo.value).length<=64){
+        xhr.onreadystatechange = existeCorreo;
+        xhr.open("POST", "server/comprobar_correo.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(`correo=${correo.value}`);
+        return true;
+    }else{
+        correoAlert.style.display = "block";
+        correoAlert.textContent = "Escriba un correo que pertenezca a educamadrid";
+        correo.style.border = "1px solid red";
+        return false;
+    }
+    
 }
 
 function existeCorreo(){
     if(xhr.readyState == 4 && xhr.status == 200){
-        const correo = document.getElementById("correo");
+        const correoAlert = document.getElementById("correoAlert");
         let respuesta = JSON.parse(xhr.responseText);
-        if(/[^@ \t\r\n]+@educa.madrid\.org/.test(correo.value)){
-            if(respuesta[0].msg == "existe"){
-                correoAlert.style.display = "block";
-                correo.style.border = "1px solid red";
-            }else{
-                correoAlert.style.display = "none";
-                correo.style.border = "1px solid green";
-            }
-        }else{
+        if(respuesta[0].msg == "existe"){
             correoAlert.style.display = "block";
             correo.style.border = "1px solid red";
-            return 0;
+            correoAlert.textContent = "Ese correo ya está en uso";
+            return true;
+        }else{
+            correoAlert.style.display = "none";
+            correo.style.border = "1px solid green";
+            return false;
         }
     }
 }
 
 function validarContrasena() {
-    let pass = document.getElementById("pass");
-    let passAlert = document.getElementById("passAlert");
+    let contrasena = document.getElementById("contrasena");
+    let contrasenaAlert = document.getElementById("contrasenaAlert");
 
-    if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/.test(pass.value)){
-        passAlert.style.display = "none";
-        pass.style.border = "1px solid green";
+    if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d$@$!%*?&]|[^ ]){8,16}$/.test(contrasena.value)){
+        contrasenaAlert.style.display = "none";
+        contrasena.style.border = "1px solid green";
+        return true;
     }else{
-        passAlert.style.display = "block";
-        pass.style.border = "1px solid red";
-        return 0;
+        contrasenaAlert.style.display = "block";
+        contrasena.style.border = "1px solid red";
+        return false;
     }
 }
 
@@ -138,17 +154,38 @@ function validarCheck(){
     let checkAlert = document.getElementById("checkAlert");
 
     if(terminos.checked){
-        checkkAlert.style.display = "none";
+        checkAlert.style.display = "none";
+        return true;
     }else{
         checkAlert.style.display = "block";
-        return 0;
+        return false;
     }
 }
 
-function registrarUsuario() {
-    validarNombre();
-    validarApellidos();
-    validarCorreo();
-    validarContrasena();
-    validarCheck();
+function peticionRegistrar() {
+    if(validarNombre() == false || validarApellidos() == false || validarUsuario() == false|| validarCorreo() == false || validarContrasena() == false || validarCheck() == false){
+        return false;
+    }else{
+        let nombre = document.getElementById("nombre");
+        let apellidos = document.getElementById("apellidos");
+        let usuario = document.getElementById("usuario");
+        let correo = document.getElementById("correo");
+        let contrasena = document.getElementById("contrasena");
+        let departamento = document.getElementById("departamento");
+        xhr.onreadystatechange = registrarProfesor;
+        xhr.open("POST", "server/crear_profesor.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(`nombre=${nombre.value}&apellidos=${apellidos.value}&usuario=${usuario.value}&correo=${correo.value}&contrasena=${contrasena.value}&departamento=${departamento.value}`);
+    }
+}
+
+function registrarProfesor(){
+    if(xhr.readyState == 4 && xhr.status == 200){
+        const inicioSesion = document.getElementById("inicioSesion");
+        let respuestaJson = JSON.parse(xhr.responseText);
+        console.log(respuestaJson[0].msg);
+        if(respuestaJson[0].msg == "guardado"){
+            inicioSesion.style.display = "block";
+        }
+    }
 }
