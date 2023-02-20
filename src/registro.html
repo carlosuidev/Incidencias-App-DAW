@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/dist/output.css" rel="stylesheet">
+    <!--<link href="/dist/output.css" rel="stylesheet">-->
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/entrada.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-teal-900 text-gray-800">
@@ -37,11 +38,18 @@
                     </div>
                 </div>
                 <div class="flex flex-col mb-5">
+                    <label for="usuario" class="font-semibold">Nombre de usuario</label>
+                    <input type="text" name="usuario" id="usuario"
+                        class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
+                        placeholder="Tu nombre de usuario para entrar">
+                    <small id="correoAlert" class="hidden text-red-400 mt-1 pl-2">Escriba un nombre de usuario válido</small>
+                </div>
+                <div class="flex flex-col mb-5">
                     <label for="correo" class="font-semibold">Correo electrónico</label>
                     <input type="email" name="correo" id="correo"
                         class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
                         placeholder="Tu correo electrónico de educamadrid">
-                    <small id="correoAlert" class="hidden text-red-400 mt-1 pl-2">Escriba un correo que pertenezca a educamadrid</small>
+                    <small id="correoAlert" class="hidden text-red-400 mt-1 pl-2">Escriba un correo que pertenezca a educamadrid y que no esté registrado</small>
                 </div>
                 <div class="flex flex-col mb-5">
                     <label for="pass" class="font-semibold">Contraseña</label>
@@ -56,7 +64,7 @@
                     </select>
                 </div>
                 <div class="flex items-baseline">
-                    <input type="checkbox" name="terminos" id="terminos"><label for="terminos" class="text-sm ml-2 text-gray-500">He leído y acepto la <a href="#" class="underline underline-offset-4">Política de privacidad</a>y el <a href="#" class="underline underline-offset-4">tratamiento de datos</a> por parte del IES Pío Baroja</label>
+                    <input type="checkbox" name="terminos" id="terminos"><label for="terminos" class="text-sm ml-2 text-gray-500">He leído y acepto la <a href="#" class="underline underline-offset-4">Política de privacidad</a> y el <a href="#" class="underline underline-offset-4">tratamiento de datos</a> por parte del IES Pío Baroja</label>
                 </div>
                 <small id="checkAlert" class="hidden text-red-400 mt-1 pl-2">Debes aceptar los términos y condiciones además de la política de privacidad</small>
                 <input type="button" id="registrar" value="Crear cuenta"

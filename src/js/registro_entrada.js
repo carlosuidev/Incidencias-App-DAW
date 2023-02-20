@@ -3,33 +3,65 @@ window.addEventListener('DOMContentLoaded', iniciarEventos);
 const xhr = new XMLHttpRequest();
 
 function iniciarEventos() {
-    document.getElementById("nombre").addEventListener("focusout", validarNombre);
-    document.getElementById("apellidos").addEventListener("focusout", validarApellidos);
-    document.getElementById("correo").addEventListener("focusout", validarCorreo);
-    document.getElementById("pass").addEventListener("focusout", validarContrasena);
-    document.getElementById("terminos").addEventListener("focusout", validarCheck);
+    document.getElementById("nombre").addEventListener("input", validarNombre);
+    document.getElementById("apellidos").addEventListener("input", validarApellidos);
+    document.getElementById("usuario").addEventListener("input", validarUsuario);
+    document.getElementById("correo").addEventListener("input", validarCorreo);
+    document.getElementById("pass").addEventListener("input", validarContrasena);
+    document.getElementById("terminos").addEventListener("input", validarCheck);
     document.getElementById("registrar").addEventListener("click", registrarUsuario);
     peticionDepartamentos();
 }
 
-function peticionDepartamentoss(){
+function peticionDepartamentos(){
     xhr.onreadystatechange = mostrarDepartamentos;
-    xhr.open("POST", "../server/listar_departamentos.php", true);
+    xhr.open("POST", "server/listar_departamentos.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send();
 }
 
 function mostrarDepartamentos(){
-    if(){
+    if(xhr.readyState == 4 && xhr.status == 200){
         const departamento = document.getElementById("departamento");
-        let respuestaJson = 
+        let respuestaJson = JSON.parse(xhr.responseText);
         
         respuestaJson.forEach(elemento => {
             const option = document.createElement("option");
-            option.setAttribute("value", elemento.departamento);
-            elemento.appendChild();
+            option.setAttribute("value", elemento.id);
+            option.innerHTML = elemento.nombre;
+            departamento.appendChild(option);
         });
     }
 }
+
+function validarUsuario(){
+    let usuario = document.getElementById("usuario");
+    xhr.onreadystatechange = existeUsuario;
+    xhr.open("POST", "server/comprobar_usuario.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(`usuario=${usuario.value}`);
+}
+
+function existeUsuario(){
+    if(xhr.readyState == 4 && xhr.status == 200){
+        const usuario = document.getElementById("usuario");
+        let respuesta = JSON.parse(xhr.responseText);
+        if(/^[a-zA-Z0-9]+$/.test(usuario.value)){
+            if(respuesta[0].msg == "existe"){
+                usuarioAlert.style.display = "block";
+                usuario.style.border = "1px solid red";
+            }else{
+                usuarioAlert.style.display = "none";
+                usuario.style.border = "1px solid green";
+            }
+        }else{
+            usuarioAlert.style.display = "block";
+            usuario.style.border = "1px solid red";
+            return 0;
+        }
+    }
+}
+
 
 function validarNombre() {
     let nombre = document.getElementById("nombre");
@@ -37,7 +69,7 @@ function validarNombre() {
 
     if(/^[a-zA-Z ]+$/.test(nombre.value)){
         nombreAlert.style.display = "none";
-        nombre.style.border = "1px solid lightgreen";
+        nombre.style.border = "1px solid green";
     }else{
         nombreAlert.style.display = "block";
         nombre.style.border = "1px solid red";
@@ -51,7 +83,7 @@ function validarApellidos() {
 
     if(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(apellidos.value)){
         apellidosAlert.style.display = "none";
-        apellidos.style.border = "1px solid lightgreen";
+        apellidos.style.border = "1px solid green";
     }else{
         apellidosAlert.style.display = "block";
         apellidos.style.border = "1px solid red";
@@ -61,15 +93,29 @@ function validarApellidos() {
 
 function validarCorreo() {
     let correo = document.getElementById("correo");
-    let correoAlert = document.getElementById("correoAlert");
+    xhr.onreadystatechange = existeCorreo;
+    xhr.open("POST", "server/comprobar_correo.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(`correo=${correo.value}`);
+}
 
-    if(/[^@ \t\r\n]+@educa.madrid\.org/.test(correo.value)){
-        correoAlert.style.display = "none";
-        correo.style.border = "1px solid lightgreen";
-    }else{
-        correoAlert.style.display = "block";
-        correo.style.border = "1px solid red";
-        return 0;
+function existeCorreo(){
+    if(xhr.readyState == 4 && xhr.status == 200){
+        const correo = document.getElementById("correo");
+        let respuesta = JSON.parse(xhr.responseText);
+        if(/[^@ \t\r\n]+@educa.madrid\.org/.test(correo.value)){
+            if(respuesta[0].msg == "existe"){
+                correoAlert.style.display = "block";
+                correo.style.border = "1px solid red";
+            }else{
+                correoAlert.style.display = "none";
+                correo.style.border = "1px solid green";
+            }
+        }else{
+            correoAlert.style.display = "block";
+            correo.style.border = "1px solid red";
+            return 0;
+        }
     }
 }
 
@@ -79,7 +125,7 @@ function validarContrasena() {
 
     if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/.test(pass.value)){
         passAlert.style.display = "none";
-        pass.style.border = "1px solid lightgreen";
+        pass.style.border = "1px solid green";
     }else{
         passAlert.style.display = "block";
         pass.style.border = "1px solid red";
