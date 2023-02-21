@@ -20,7 +20,7 @@
                 <img src="svg/logo_baroja.svg" alt="IES PÍO BAROJA" class="mb-5" width="132px">
                 <h3 class=" font-bold text-3xl">Regístrate</h3>
                 <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Ya tienes cuenta? <a
-                        href="index.html" class="font-semibold text-teal-800 hover:text-teal-900">Inicia sesión</a>.</p>
+                        href="index.php" class="font-semibold text-teal-800 hover:text-teal-900">Inicia sesión</a>.</p>
                 <div class="flex grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-5">
                     <div class="lg:col-span-1 md:col-span-1 sm:col-span-3 flex flex-col mb-0.5">
                         <label for="nombre" class="font-semibold">Nombre</label>

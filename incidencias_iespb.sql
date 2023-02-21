@@ -35,7 +35,7 @@ CREATE TABLE `profesores`(
     FOREIGN KEY (`id_departamento`) REFERENCES `departamentos`(`id_departamento`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO `profesores`(`usuario`, `nombre`, `apellidos`, `correo`, `pass`, `id_departamento`) VALUES
-('CTIC', 'CTIC', 'Administrador', 'admin@educa.madrid.org', 'CTICPIO2023', 1),
+('CTIC', 'CTIC', 'Administrador', 'admin@educa.madrid.org', 'CTICPio2023', 1),
 ('raulprofe', 'Raúl', 'Blázquez Rubio', 'raul@educa.madrid.org', 'Profesor1', 5),
 ('maiteprofe', 'María Teresa', 'Blázquez Rubio', 'maite@educa.madrid.org', 'Profesor1', 5),
 ('jaunprofe', 'Juan', 'Martínez Val', 'juan@educa.madrid.org', 'Profesor1', 9),

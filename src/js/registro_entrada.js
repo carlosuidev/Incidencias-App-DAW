@@ -37,7 +37,7 @@ function mostrarDepartamentos(){
 function validarUsuario() {
     let usuario = document.getElementById("usuario");
     let usuarioAlert = document.getElementById("usuarioAlert");
-    if(/[a-zA-Z]\w{5,14}/.test(usuario.value)){
+    if(/[a-zA-Z]\w/.test(usuario.value) && (usuario.value).length<=32 && (usuario.value).length>=4){
         xhr.onreadystatechange = existeUsuario;
         xhr.open("POST", "server/comprobar_usuario.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

@@ -1,5 +1,13 @@
 <!doctype html>
 <html>
+<?php
+    session_start();
+    if(isset($_SESSION['id']) && $_SESSION['id'] == 1){
+        header("Location: adm_menu_inicio.php");
+    }else if(!isset($_SESSION['existe'])){
+        header("Location: index.php");
+    }
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +15,7 @@
     <!--<link href="/dist/output.css" rel="stylesheet">-->
     <link rel="stylesheet" href="styles/general.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -17,25 +26,23 @@
             </div>
             <p>MENÚ</p>
             <div class="mt-5">
-                <a href="#" class="duration-300 flex items-center font-bold text-sm rounded-l-lg transition ease-in border-4 border-gray-200 border-r-teal-800 bg-gray-200 hover:bg-gray-200 hover:bg-teal-800 hover:border-teal-800 hover:text-white px-4 py-2 flex mb-2">
+                <a href="menu_inicio.php" class="duration-300 flex items-center font-bold text-sm rounded-l-lg transition ease-in border-4 border-gray-200 border-r-teal-800 bg-gray-200 hover:bg-gray-200 hover:bg-teal-800 hover:border-teal-800 hover:text-white px-4 py-2 flex mb-2">
                     <img src="svg/iconos/inicio_icon_sm.svg" alt="Icono de inicio" class="pr-3"> Inicio</a>
-                <a href="#" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-teal-800 hover:text-white px-5 py-3 flex mb-2">
+                <a href="nueva_incidencia.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-teal-800 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/nueva_incidencia_icon_sm.svg" alt="Icono de nueva incidencia" class="pr-3"> Nueva incidencia</a>
-                <a href="#" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-orange-900 hover:text-white px-5 py-3 flex mb-2">
+                <a href="incidencias_activas.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-orange-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/incidencias_activas_icon_sm.svg" alt="Icono de incidencias activas" class="pr-3"> Incidencias activas</a>
-                <a href="#" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-pink-900 hover:text-white px-5 py-3 flex mb-2">
+                <a href="historial.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-pink-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/historial_icon_sm.svg" alt="Icono de historial" class="pr-3"> Historial</a>
-                <a href="#" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-blue-900 hover:text-white px-5 py-3 flex mb-2">
+                <a href="https://aulavirtual33.educa.madrid.org/ies.piobaroja.madrid/" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-blue-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/educamadrid_icon_sm.png" alt="Icono de educamadrid" class="pr-3"> Educamadrid</a>
             </div>
         </div>
         <div class="pb-8 pr-8">
             <div class="flex flex-col pl-5">
-                <a href="#" class="flex mb-3 text-sm hover:ml-3 hover:font-semibold duration-300">
+                <a href="perfil.php" class="flex mb-3 text-sm hover:ml-3 hover:font-semibold duration-300">
                     <img src="svg/iconos/perfil_icon.svg" alt="Icono de usuario" class="mr-2"> Mi perfil</a>
-                <a href="#" class="flex mb-3 text-sm hover:ml-3 hover:font-semibold duration-300">
-                    <img src="svg/iconos/ajustes_icon.svg" alt="Iconod de ajustes" class="mr-2"> Ajustes</a>
-                <a href="#" class="flex mb-3 text-sm text-red-500 hover:ml-3 hover:font-semibold duration-300">
+                <a id="cerrarSesion" class="flex mb-3 text-sm hover:ml-3 text-red-700 hover:font-semibold duration-300 cursor-pointer">
                     <img src="svg/iconos/cerrar_sesion_icon.svg" alt="Icono de cerrar sesión" class="mr-2"> Cerrar sesión</a>
             </div>
             <hr class="border mt-4">
@@ -44,13 +51,13 @@
     </aside>
     <nav class="bg-white p-5">
         <div class="container mx-auto flex justify-between items-center">
-            <h4 class="text-xl font-semibold">Bienvenid@ Raúl</h4>
+            <h4 class="text-xl font-semibold">Bienvenid@ <?php echo $_SESSION["nombre"] ?></h4>
             <div>
                 <div>
                     <img src="" alt="">
                     <div>
-                        <p class="text-sm">Raúl Blázquez</p>
-                        <p class="text-xs text-gray-600">Profesor</p>
+                        <p class="text-sm"><?php echo $_SESSION["nombre"];echo " ".$_SESSION["apellidos"] ?></p>
+                        <p class="text-xs text-gray-600"><?php echo $_SESSION["rol"]?></p>
                     </div>
                 </div>
             </div>
