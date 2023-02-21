@@ -2,9 +2,9 @@
 <?php 
     session_start();
     if(isset($_SESSION['id']) && $_SESSION['id'] == 1){
+        header("Location: adm_menu_inicio.php");
+    }else if(isset($_SESSION['id'])){
         header("Location: menu_inicio.php");
-    }else if(isset($_SESSION['existe'])){
-        header("Location: index.php");
     }
 ?>
 <html>

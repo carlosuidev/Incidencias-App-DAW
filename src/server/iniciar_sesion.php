@@ -19,8 +19,6 @@ if ($conn->connect_error) {
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_assoc($result)) {
             session_start();
-            $_SESSION["sesion"] = "activa";
-            $_SESSION["nombre"] = $row["nombre"];
             $_SESSION["nombre"] = $row["nombre"];
             $_SESSION["apellidos"] = $row["apellidos"];
             $_SESSION["id"] = $row["id_profesor"];

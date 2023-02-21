@@ -2,10 +2,10 @@
 <html>
 <?php
     session_start();
-    if(isset($_SESSION['id']) && $_SESSION['id'] == 1){
-        header("Location: adm_menu_inicio.php");
-    }else if(!isset($_SESSION['existe'])){
+    if(!isset($_SESSION['id'])){
         header("Location: index.php");
+    }else if($_SESSION['id'] == 1){
+        header("Location: adm_menu_inicio.php");
     }
 ?>
 
@@ -16,12 +16,19 @@
     <link rel="stylesheet" href="styles/general.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
+    <script
+        src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
-    <aside class="shadow-md fixed top-0 bottom-0 lg:left-0 pl-5 overflow-y-auto bg-white flex flex-col justify-between">
+    <aside class="hidden sm:flex w-full sm:w-56 shadow-md fixed top-0 bottom-0 lg:left-0 pl-5 overflow-y-auto bg-white flex flex-col justify-between">
         <div>
-            <div class="flex justify-center pt-3 pb-16 pr-5 pt-6">
+            <div class="sm:hidden flex pt-8 pr-8 justify-end cursor-pointer" id="close">
+                <img src="svg/iconos/cross.svg" alt="Cerrar">
+            </div>
+            <div class="flex justify-center pt-3 pb-16 pr-5 pt-6 cursor-pointer" id="inicioLogo">
                 <img src="svg/logo_baroja.svg" alt="IES PÍO BAROJA">
             </div>
             <p>MENÚ</p>
@@ -38,7 +45,7 @@
                     <img src="svg/iconos/educamadrid_icon_sm.png" alt="Icono de educamadrid" class="pr-3"> Educamadrid</a>
             </div>
         </div>
-        <div class="pb-8 pr-8">
+        <div class="pb-8 pr-8 pt-32">
             <div class="flex flex-col pl-5">
                 <a href="perfil.php" class="flex mb-3 text-sm hover:ml-3 hover:font-semibold duration-300">
                     <img src="svg/iconos/perfil_icon.svg" alt="Icono de usuario" class="mr-2"> Mi perfil</a>
@@ -49,27 +56,30 @@
             <p class="text-xs mt-4 text-center text-gray-600">DAW &copy;2023</p>
         </div>
     </aside>
-    <nav class="bg-white p-5">
+    <nav class="bg-white p-5 ml-0 sm:ml-56">
         <div class="container mx-auto flex justify-between items-center">
-            <h4 class="text-xl font-semibold">Bienvenid@ <?php echo $_SESSION["nombre"] ?></h4>
+            <div class="flex">
+                <button class="mr-3" id="hamburger"><img src="svg/iconos/hamburger.svg" alt="Abrir menú"></button>
+                <h4 class="text-xl font-semibold sm:block hidden">Bienvenid@ <?php echo $_SESSION["nombre"] ?></h4>
+            </div>
             <div>
-                <div>
-                    <img src="" alt="">
+                <div class="flex cursor-pointer" id="perfilDatos">
+                    <img src="svg/iconos/profile.svg" alt="Usuario" class="mr-3">
                     <div>
-                        <p class="text-sm"><?php echo $_SESSION["nombre"];echo " ".$_SESSION["apellidos"] ?></p>
-                        <p class="text-xs text-gray-600"><?php echo $_SESSION["rol"]?></p>
+                        <p class="text-sm font-medium flex"><?php echo $_SESSION["nombre"]?><span class="sm:block hidden ml-1"><?php echo $_SESSION["apellidos"] ?></span></p>
+                        <p class="text-xs text-gray-400"><?php echo $_SESSION["rol"]?></p>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-    <section id="main-content" class="p-8">
+    <section id="main-content" class="p-8 ml-0 sm:ml-56">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div id="nuevaIncidencia" class="cursor-pointer py-4 px-8 bg-green-100 w-full overflow-hidden border border-emerald-300 rounded-xl hover:border-teal-900 hover:shadow-lg transition duration-300 flex justify-between items-center flex-wrap">
                     <div>
                         <h2 class="text-2xl font-bold text-teal-900 mb-3">Nueva incidencia</h2>
-                        <img src="svg/iconos/nueva_incidencia_icon_lg.svg" alt="Icono de nueva incidencia">
+                        <img src="svg/iconos/nueva_incidencia_icon_lg.svg" alt="Icono de nueva incidencia" class="pr-4">
                     </div>
                     <div>
                         <img  src="svg/nueva_incidencia_illustration.svg" alt="Mujer reperando un robot">
@@ -113,7 +123,8 @@
             </div>
         </div>
     </section>
-    <script src="js/main.js"></script>
+    <script src="js/main_user.js"></script>
+    <script src="js/extras_jquery.js"></script>
 </body>
 
 </html>

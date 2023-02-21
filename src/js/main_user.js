@@ -4,29 +4,39 @@ const xhr = new XMLHttpRequest();
 
 function eventos() {
     // REDIRECCIONES
-    //document.getElementById("").addEventListener("click", irNuevaIncidencia);
-    //document.getElementById("").addEventListener("click", irIncidenciasActivas);
-    //document.getElementById("").addEventListener("click", irHistorial);
+    document.getElementById("inicioLogo").addEventListener("click", irInicio);
+    document.getElementById("nuevaIncidencia").addEventListener("click", irNuevaIncidencia);
+    document.getElementById("incidenciasActivas").addEventListener("click", irIncidenciasActivas);
+    document.getElementById("historialIncidencias").addEventListener("click", irHistorial);
     document.getElementById("educamadridIncidencias").addEventListener("click", irEducamadrid);
-    document.getElementById("cerrarSesion").addEventListener("click", peticionCerrarSesion);
+    document.getElementById("perfilDatos").addEventListener("click", irPerfil);
 
-    // NAVBAR
+    // CERRAR SESIÓN
+    document.getElementById("cerrarSesion").addEventListener("click", peticionCerrarSesion);
+}
+
+function irInicio() {
+    window.location.href = "menu_inicio.php";
 }
 
 function irNuevaIncidencia() {
-    window.location.href = "www.yoursite.com";
+    window.location.href = "nueva_incidencia.php";
 }
 
 function irIncidenciasActivas() {
-    window.location.href = "www.yoursite.com";
+    window.location.href = "incidencias_activas.php";
 }
 
 function irHistorial() {
-    window.location.href = "www.yoursite.com";
+    window.location.href = "historial.php";
 }
 
 function irEducamadrid() {
     window.location.href = "https://aulavirtual33.educa.madrid.org/ies.piobaroja.madrid/";
+}
+
+function irPerfil(){
+    window.location.href = "perfil.php";
 }
 
 function peticionCerrarSesion(){
@@ -42,10 +52,10 @@ function respuestaCerrarSesion(){
 
         switch(respuestaJson[0].msg){
             case "bien":
-                window.location.href = "menu_inicio.php";
+                window.location.href = "index.php";
                 break;
             case "mal":
-                console.log("Error al iniciar sesión");
+                console.log("Error al cerrar sesión");
                 break;
         }
     }

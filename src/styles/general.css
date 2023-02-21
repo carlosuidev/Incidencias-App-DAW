@@ -8,12 +8,12 @@ input[type=button]{
     cursor: pointer !important;
 }
 
-aside{
-    width: 240px;
-}
-
 textarea:focus, input:focus{
     outline: none;
+}
+
+aside{
+    z-index: 20;
 }
 
 aside::-webkit-scrollbar{
@@ -26,13 +26,13 @@ aside::-webkit-scrollbar-thumb {
     border-radius: 100rem;
 }
 
-#main-content, nav{
-    margin-left: 240px;
+#hamburger{
+    display: none;
 }
 
 @media (max-width: 640px) {
-    aside{
-        display: none !important;
+    #hamburger{
+        display: block;
     }
 
     #main-content, nav{
