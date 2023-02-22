@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/entrada.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
+    <title>Sistema de Incidencias del IES Pío Baroja</title>
 </head>
 
 <body class="bg-teal-900 text-gray-800">

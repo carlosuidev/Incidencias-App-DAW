@@ -21,6 +21,7 @@
         src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
+    <title>Sistema de Incidencias del IES Pío Baroja</title>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -85,10 +86,13 @@
             </div>
 
             <div class="bg-white rounded p-8 shadow grid lg:grid-cols-2 md:grid-cols-1 gap-16">
+                
                 <form>
+                <p id="msgError" class="hidden mb-5 text-center text-sm p-3 bg-red-200 rounded border text-red-700 border-red-700">No se ha podido procesar su solicitud. Si persigue contacte con el administrador.</p>
                     <div class="flex flex-col mb-5">
                         <label for="asunto" class="font-semibold">Asunto</label>
-                        <input type="text" name="asunto" id="asunto"  placeholder="Motivo de la incidencia" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm">
+                        <input type="text" name="asunto" id="asunto" placeholder="Motivo de la incidencia" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm">
+                        <small id="asuntoAlert" class="hidden text-red-400 mt-1 pl-2">Debes escribir un asunto válido</small>
                     </div>
                     <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-4 mb-5">
                         <div class="flex flex-col">
@@ -103,10 +107,23 @@
                         </div>
                     </div>
                     <div class="flex flex-col mb-5">
-                        <label for="descripcion" class="font-semibold">Descripción</label>
-                        <textarea name="descripcion" id="descripcion"  placeholder="Detalla la incidencia" cols="30" rows="10" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"></textarea>
+                        <label for="tipo" class="font-semibold">Tipo de incidencia</label>
+                        <select name="tipo" id="tipo" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm">
+                            <option value="1">Hardware</option>
+                            <option value="2">Software</option>
+                            <option value="3">Conectividad</option>
+                            <option value="4">Recursos EducaMadrid</option>
+                            <option value="5">PDI</option>
+                            <option value="6">Impresión</option>
+                        </select>
                     </div>
-                    <input type="button" value="Enviar incidencia" class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-3">
+                    <div class="flex flex-col mb-5">
+                        <label for="descripcion" class="font-semibold">Descripción</label>
+                        <textarea name="descripcion" id="descripcion" placeholder="Detalla la incidencia" cols="30" rows="10" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"></textarea>
+                        <small id="descripcionAlert" class="hidden text-red-400 mt-1 pl-2">Debes escribir una descripción válida</small>
+                    </div>
+                    <input type="hidden" id="profesor" value="<?php echo $_SESSION['id'] ?>">
+                    <input type="button" id="crearIncidencia" value="Enviar incidencia" class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-3">
                 </form>
                 <img src="svg/nueva_incidencia_illustration.svg" alt="Mujer arreglando un robot" class="w-full p-8">
             </div>

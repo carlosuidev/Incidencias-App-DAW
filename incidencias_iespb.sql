@@ -79,7 +79,7 @@ CREATE TABLE `incidencias`(
     `respuesta` VARCHAR(64),
     `estado` VARCHAR(12) NOT NULL,
     `id_tipo` INT NOT NULL,
-    `fecha` VARCHAR(8) NOT NULL,
+    `fecha` VARCHAR(10) NOT NULL,
     `id_aula` int NOT NULL,
     PRIMARY KEY (`id_incidencia`),
     FOREIGN KEY (`id_profesor`) REFERENCES `profesores`(`id_profesor`),
@@ -87,7 +87,7 @@ CREATE TABLE `incidencias`(
     FOREIGN KEY (`id_grupo`) REFERENCES `grupos`(`id_grupo`) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (`id_tipo`) REFERENCES `tipos`(`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE
 );
-INSERT INTO `incidencias`(`id_profesor`, `id_grupo`, `descripcion`, `respuesta`, `estado`, `id_tipo`, `fecha`, `id_aula`)VALUES
-(2, 2, 'No funciona el proyector', 'Debes presionar el botón de encendido, durante 5 segundos del mando', 'Terminada', 1,'10/10/2022', 8),
-(2, 5, 'La impresora no tiene cable para conectarse', 'Debes presionar el botón de encendido, durante 5 segundos del mando', 'Terminada', 3,'20/12/2022', 3),
-(2, 1, 'No puedo acceder a educamadrid', '', 'En proceso', 4,'20/12/2022', 1);
+INSERT INTO `incidencias`(`id_profesor`, `id_grupo`, `asunto`, `descripcion`, `respuesta`, `estado`, `id_tipo`, `fecha`, `id_aula`)VALUES
+(2, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando', 'Terminada', 1,'10/10/2022', 8),
+(2, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz','Debes presionar el botón de encendido, durante 5 segundos del mando', 'Terminada', 3,'20/12/2022', 3),
+(2, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales','', 'En proceso', 4,'20/12/2022', 1);

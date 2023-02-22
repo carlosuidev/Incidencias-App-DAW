@@ -4,6 +4,8 @@ $username = "root";
 $password = "";
 $dbname = "incidencias_iespb";
 
+date_default_timezone_set('UTC');
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -12,15 +14,18 @@ if ($conn->connect_error) {
 }
 
 try {
-    $asunto = $_REQUEST['nombre'];
+    $asunto = $_REQUEST['asunto'];
     $aula = $_REQUEST['aula'];
     $grupo = $_REQUEST['grupo'];
     $descripcion = $_REQUEST['descripcion'];
     $profesor = $_REQUEST['profesor'];
-    $fecha = "";
+    $tipo = $_REQUEST['tipo'];
+    $fecha = date("j/n/Y"); ;
     $respuesta = "";
+    $estado = "EN PROCESO";
 
-    $sql = "INSERT INTO incidencias (nombre, apellidos, usuario, correo, pass, id_departamento) values('$nombre', '$apellidos', '$usuario', '$correo', '$contrasena', $departamento)";
+    $sql = "INSERT INTO incidencias (id_profesor, id_grupo, asunto, descripcion, respuesta, estado, id_tipo, fecha, id_aula) 
+    values($profesor, $grupo, '$asunto', '$descripcion', '$respuesta', '$estado', $tipo, '$fecha', $aula)";
     if ($conn->query($sql) === TRUE) {
         echo "[{\"msg\": \"guardado\"}]";
     } else {
@@ -28,7 +33,7 @@ try {
     }
     $conn->close();
 } catch (\Throwable $th) {
-    echo "[{\"msg\": \"$sql\"}]";
+    echo "[{\"msg\": \"$conn->error\"}]";
     $conn->close();
 }
 
