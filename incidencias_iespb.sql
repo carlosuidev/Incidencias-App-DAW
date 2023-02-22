@@ -45,10 +45,10 @@ INSERT INTO `profesores`(`usuario`, `nombre`, `apellidos`, `correo`, `pass`, `id
 DROP TABLE IF EXISTS `aulas`;
 CREATE TABLE `aulas`(
     `id_aula` INT AUTO_INCREMENT,
-    `aula` VARCHAR(12) NOT NULL,
+    `aula` VARCHAR(32) NOT NULL,
     PRIMARY KEY (`id_aula`)
 );
-INSERT INTO `aulas`(`aula`) VALUES ('(Digital)'), ('DESPACHO JEFATURA'), ('DESPACHO DIRECCIÓN'), ('DEPACHO SECRETARÍA'), ('SALA DE PROFESORES'), ('BIBLIOTECA'), ('SECRETARÍA'), ('CONSERJERÍA'), ('SALÓN DE ACTOS'), ('GIMNASIO'), ('SALA EMPRENDIMIENTO'), ('AULA B.1'), ('AULA B.2'), ('AULA B.3'), ('AULA B.4'), ('AULA B.5'), ('AULA B.7'), ('AULA B.9'), ('AULA B.11'), ('AULA B.13'), ('AULA 1.1'), ('AULA 1.2'), ('AULA 1.3'), ('AULA 1.4'), ('AULA 1.5'), ('AULA 1.6'), ('AULA 1.7'), ('AULA 1.8'), ('AULA 1.9'), ('AULA 1.10'), ('AULA 1.11'), ('AULA 1.12'), ('AULA 1.13'), ('AULA 1.14'), ('AULA 1.15'), ('AULA 1.16'), ('AULA 1.17'), ('AULA 1.18'), ('AULA 1.19'), ('AULA 1.20'), ('AULA 1.21'), ('AULA 1.22'), ('AULA 1.23'), ('AULA 2.1'), ('AULA 2.2'), ('AULA 2.3'), ('AULA 2.4'), ('AULA 2.5'), ('AULA 2.6'), ('AULA 2.7'), ('AULA 2.8'), ('AULA 2.9'), ('AULA 2.11'), ('AULA 2.13');
+INSERT INTO `aulas`(`aula`) VALUES ('DESPACHO JEFATURA'), ('DESPACHO DIRECCIÓN'), ('DEPACHO SECRETARÍA'), ('SALA DE PROFESORES'), ('BIBLIOTECA'), ('SECRETARÍA'), ('CONSERJERÍA'), ('SALÓN DE ACTOS'), ('GIMNASIO'), ('SALA EMPRENDIMIENTO'), ('AULA B.1'), ('AULA B.2'), ('AULA B.3'), ('AULA B.4'), ('AULA B.5'), ('AULA B.7'), ('AULA B.9'), ('AULA B.11'), ('AULA B.13'), ('AULA 1.1'), ('AULA 1.2'), ('AULA 1.3'), ('AULA 1.4'), ('AULA 1.5'), ('AULA 1.6'), ('AULA 1.7'), ('AULA 1.8'), ('AULA 1.9'), ('AULA 1.10'), ('AULA 1.11'), ('AULA 1.12'), ('AULA 1.13'), ('AULA 1.14'), ('AULA 1.15'), ('AULA 1.16'), ('AULA 1.17'), ('AULA 1.18'), ('AULA 1.19'), ('AULA 1.20'), ('AULA 1.21'), ('AULA 1.22'), ('AULA 1.23'), ('AULA 2.1'), ('AULA 2.2'), ('AULA 2.3'), ('AULA 2.4'), ('AULA 2.5'), ('AULA 2.6'), ('AULA 2.7'), ('AULA 2.8'), ('AULA 2.9'), ('AULA 2.11'), ('AULA 2.13'), ('(OTROS)');
 
 
 DROP TABLE IF EXISTS `grupos`;
@@ -57,7 +57,7 @@ CREATE TABLE `grupos`(
     `grupo` VARCHAR(42) NOT NULL,
     PRIMARY KEY (`id_grupo`)
 );
-INSERT INTO `grupos`(`grupo`) VALUES ('(Digital)'), ('1º COMERCIO INTERNACIONAL-DUAL'),('1º ASIR-DUAL'),('1º APD'),('1º AEI'),('1º FPB AF'),('1º CI'),('2º CI-DISTANCIA'),('1º FPB'),('2º FPB'),('1º COM'),('1º COM V'),('2º COM'),('2º COM V'),('1º AFD A'),('1º AFD B'),('2º AFD A'),('2º AFD B'),('1º IS A'),('1º IS V'),('1º IS B'),('2º IS V'),('2º IS A'),('1º GUIA'),('2º GUIA'),('2º EI A'),('2º EI B'),('1º JARD'),('2º JARD'),('ACEPELU'),('ACE MBE'),('1º B EI'),('1º DAW'),('1º DAM'),('2º DAW'),('2º DAM'),('1º SMR'),('2º SMR'),('1º AF'),('2º AF'),('1º ASDI'),('1º AGM'),('2º AGM'),('2º MC A'),('2º MC B'),('1º MC A'),('1º MC B'),('2º APD'),('2º IS B');
+INSERT INTO `grupos`(`grupo`) VALUES ('1º COMERCIO INTERNACIONAL-DUAL'),('1º ASIR-DUAL'),('1º APD'),('1º AEI'),('1º FPB AF'),('1º CI'),('2º CI-DISTANCIA'),('1º FPB'),('2º FPB'),('1º COM'),('1º COM V'),('2º COM'),('2º COM V'),('1º AFD A'),('1º AFD B'),('2º AFD A'),('2º AFD B'),('1º IS A'),('1º IS V'),('1º IS B'),('2º IS V'),('2º IS A'),('1º GUIA'),('2º GUIA'),('2º EI A'),('2º EI B'),('1º JARD'),('2º JARD'),('ACEPELU'),('ACE MBE'),('1º B EI'),('1º DAW'),('1º DAM'),('2º DAW'),('2º DAM'),('1º SMR'),('2º SMR'),('1º AF'),('2º AF'),('1º ASDI'),('1º AGM'),('2º AGM'),('2º MC A'),('2º MC B'),('1º MC A'),('1º MC B'),('2º APD'),('2º IS B'), ('(OTROS)');
 
 
 DROP TABLE IF EXISTS `tipos`;
@@ -74,6 +74,7 @@ CREATE TABLE `incidencias`(
     `id_incidencia` int NOT NULL AUTO_INCREMENT,
     `id_profesor` int NOT NULL,
     `id_grupo` int NOT NULL,
+    `asunto` VARCHAR(64),
     `descripcion` VARCHAR(250) NOT NULL,
     `respuesta` VARCHAR(64),
     `estado` VARCHAR(12) NOT NULL,

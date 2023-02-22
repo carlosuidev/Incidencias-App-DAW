@@ -4,11 +4,31 @@ const xhr = new XMLHttpRequest();
 
 function eventos() {
     // REDIRECCIONES
+    try {
+        document.getElementById("nuevaIncidencia").addEventListener("click", irNuevaIncidencia);
+    } catch (error) {
+        console.log("Sin redirigir a Nueva Incidencia");
+    }
+
+    try {
+        document.getElementById("educamadridIncidencias").addEventListener("click", irEducamadrid);
+    } catch (error) {
+        console.log("Sin redirigir a EducaMadrid");
+    }
+
+    try {
+        document.getElementById("incidenciasActivas").addEventListener("click", irIncidenciasActivas);
+    } catch (error) {
+        console.log("Sin redirigir a Incidencias activas");
+    }
+
+    try {
+        document.getElementById("historialIncidencias").addEventListener("click", irHistorial);
+    } catch (error) {
+        console.log("Sin redirigir a Historial");
+    }
+
     document.getElementById("inicioLogo").addEventListener("click", irInicio);
-    document.getElementById("nuevaIncidencia").addEventListener("click", irNuevaIncidencia);
-    document.getElementById("incidenciasActivas").addEventListener("click", irIncidenciasActivas);
-    document.getElementById("historialIncidencias").addEventListener("click", irHistorial);
-    document.getElementById("educamadridIncidencias").addEventListener("click", irEducamadrid);
     document.getElementById("perfilDatos").addEventListener("click", irPerfil);
 
     // CERRAR SESIÓN
