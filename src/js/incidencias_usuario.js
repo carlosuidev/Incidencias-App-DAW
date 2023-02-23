@@ -17,14 +17,58 @@ function peticionIncidencias() {
 function respuestaIncidencias() {
     if(xhrIncidencias.readyState == 4 && xhrIncidencias.status == 200){
         let respuestaJson = JSON.parse(xhrIncidencias.responseText);
-        const listado = document.getElementById("listaIncidencia");
+        const listado = document.getElementById("listaIncidencias");
 
         if(respuestaJson[0].id != "sin"){
             respuestaJson.forEach(incidencia => {
-                const incidenciaBox =  document.createElement("incidencia-box");
-                incidenciaBox.setAttribute("", "");
-
-                listado.appendChild(incidenciaBox);
+                if(incidencia.estado == 'TERMINADA'){
+                    listado.innerHTML += `
+                        <div class='rounded bg-white p-8 flex flex-col flex-wrap justify-between'>
+                            <div>
+                                <div class='mb-3 flex w-full flex-wrap justify-between items-center'>
+                                    <p class='text-xs font-semibold py-1 px-3 rounded-full bg-green-500 text-white'>${incidencia.estado}</p>
+                                    <p class='text-sm'>${incidencia.fecha}</p>
+                                </div>
+                                <h3 class='text-xl font-bold'>${incidencia.asunto}</h3>
+                                <div class='mt-2 flex flex-wrap justify-start items-center'>
+                                    <p class='text-sm font-bold mr-3'>Tipo: <span class='font-normal'>${incidencia.tipo}</span></p>
+                                    <p class='text-sm font-bold mr-3'>Grupo: <span class='font-normal'>${incidencia.grupo}</span></p>
+                                    <p class='text-sm font-bold mr-3'>Aula: <span class='font-normal'>${incidencia.aula}</span></p>
+                                </div>
+                                <hr class='my-5'>
+                                <p class='px-3'>${incidencia.descripcion}</p>
+                                <div class='bg-green-200 border rounded p-3 mt-4 mb-8'>
+                                    <p class='text-sm font-bold'>Respuesta: <span class='font-normal'>${incidencia.respuesta}</span></p>
+                                </div>
+                            </div>
+                            <div>
+                                <form action='' method='POST'>
+                                    <input type='hidden' value='${incidencia.id}'>
+                                    <input type='submit' value='Archivar' class='w-full bg-teal-800 text-white rounded font-semibold py-2'>
+                                </form>
+                            </div>
+                        </div>
+                    `
+                }else if(incidencia.estado == 'EN PROCESO'){
+                    listado.innerHTML += `
+                        <div class='rounded bg-white p-8 flex flex-col flex-wrap justify-between'>
+                            <div>
+                                <div class='mb-3 flex w-full flex-wrap justify-between items-center'>
+                                    <p class='text-xs font-semibold py-1 px-3 rounded-full bg-orange-500 text-white'>${incidencia.estado}</p>
+                                    <p class='text-sm'>${incidencia.fecha}</p>
+                                </div>
+                                <h3 class='text-xl font-bold'>${incidencia.asunto}</h3>
+                                <div class='mt-2 flex flex-wrap justify-start items-center'>
+                                    <p class='text-sm font-bold mr-3'>Tipo: <span class='font-normal'>${incidencia.tipo}</span></p>
+                                    <p class='text-sm font-bold mr-3'>Grupo: <span class='font-normal'>${incidencia.grupo}</span></p>
+                                    <p class='text-sm font-bold mr-3'>Aula: <span class='font-normal'>${incidencia.aula}</span></p>
+                                </div>
+                                <hr class='my-5'>
+                                <p class='px-3'>${incidencia.descripcion}</p>
+                            </div>
+                        </div>
+                    `
+                }
             });
         }else{
             const pNada = document.createElement("p");

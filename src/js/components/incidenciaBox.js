@@ -1,6 +1,7 @@
 class incidenciaBox extends HTMLElement{
     constructor(){
         super();
+        this.id;
         this.estado;
         this.fecha;
         this.asunto;
@@ -8,15 +9,18 @@ class incidenciaBox extends HTMLElement{
         this.grupo;
         this.tipo;
         this.respuesta;
-        this.mensaje;
+        this.descripcion;
     }
 
     static get observedAttributes(){
-        return ["estado","fecha","asunto","aula","grupo","tipo","respuesta","mensaje"];
+        return ["id","estado","fecha","asunto","aula","grupo","tipo","respuesta","descripcion"];
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
         switch(nameAttr){
+            case "id":
+                this.id = newValue;
+            break;
             case "estado":
                 this.estado = newValue;
             break;
@@ -38,27 +42,39 @@ class incidenciaBox extends HTMLElement{
             case "respuesta":
                 this.respuesta = newValue;
             break;
-            case "mensaje":
-                this.mensaje = newValue;
+            case "descripcion":
+                this.descripcion = newValue;
             break;
         }
     }
 
     connectedCallback(){
         this.innerHTML = `
-            <div class='flex w-full flex-wrap justify-between items-center'>
-                <p>${estado}</p>
-                <p>${fecha}</p>
+            <div>
+                <div class='flex w-full flex-wrap justify-between items-center'>
+                    <p class='py-1 px-2 rounded-full bg-red-200'>${estado}</p>
+                    <p>${fecha}</p>
+                </div>
+                <h3>${asunto}</h3>
+                <div class='flex flex-wrap justify-start items-center'>
+                    <p class='text-sm text-bold'>Tipo: <span class='text-normal'>${tipo}</span></p>
+                    <p class='text-sm text-bold'>Grupo: <span class='text-normal'>${grupo}</span></p>
+                    <p class='text-sm text-bold'>Aula: <span class='text-normal'>${aula}</span></p>
+                </div>
+                <p class='text-sm'>${descripcion}</p>
+                <div class='bg-green-200 border rounded p-3'>
+                    <p class='text-sm font-bold'>Respuesta: <span clas='font-normal'>${respuesta}</span></p>
+                </div>
             </div>
-            <h3>${asunto}</h3>
-            <div class='flex flex-wrap justify-start items-center'>
-                <p class='text-sm text-bold'>Tipo: <span class='text-normal'>${tipo}</span></p>
-                <p class='text-sm text-bold'>Grupo: <span class='text-normal'>${grupo}</span></p>
-                <p class='text-sm text-bold'>Aula: <span class='text-normal'>${aula}</span></p>
+            <div>
+                <form action='' method='POST'>
+                    <input type='hidden' value='${id}'>
+                    <input type='submit' value='Archivar'>
+                </form>
+                
             </div>
-
         `
-        this.setAttribute("class", "flex");
+        this.setAttribute("class", "flex flex-col flex-wrap justify-between");
     }
 }
 
