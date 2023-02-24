@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 try {
     $idProfesor = $_REQUEST['id_profesor'];
-    $sql = "SELECT i.id_incidencia, i.fecha, i.asunto, i.descripcion, i.respuesta, i.estado, t.tipo, a.aula, g.grupo
+    $sql = "SELECT *
     FROM incidencias i
     INNER JOIN tipos t
         on t.id_tipo = i.id_tipo

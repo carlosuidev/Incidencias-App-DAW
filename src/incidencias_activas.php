@@ -90,7 +90,6 @@ if (!isset($_SESSION['id'])) {
     <script src="js/main_user.js"></script>
     <script src="js/extras_jquery.js"></script>
     <script src="js/incidencias_usuario.js"></script>
-    <script src="js/components/incidenciaBox.js"></script>
 </body>
 
 </html>
