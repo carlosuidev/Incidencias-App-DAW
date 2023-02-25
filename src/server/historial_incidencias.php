@@ -14,15 +14,105 @@ if ($conn->connect_error) {
 
 try {
     $idProfesor = $_REQUEST['id_profesor'];
-    $sql = "SELECT *
-    FROM incidencias i
-    INNER JOIN tipos t
-        on t.id_tipo = i.id_tipo
-    INNER JOIN aulas a
-        on a.id_aula = i.id_aula
-    INNER JOIN grupos g
-        on g.id_grupo = i.id_grupo
-    WHERE i.id_profesor = $idProfesor";
+    $estado = $_REQUEST['estado'];
+    $tipo = $_REQUEST['tipo'];
+    $asunto = $_REQUEST['asunto'];
+
+    // TODO CAMBIADO
+    if($estado!='-' && $tipo!=0 && $asunto!=''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' AND i.id_tipo=$tipo AND estado='$estado'";
+    
+    // SOLO ESTADO
+    }else if($estado!='-' && $tipo==0 && $asunto==''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' ";
+    
+    // SOLO ASUNTO
+    }else if($estado=='-' && $tipo==0 && $asunto!=''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.asunto LIKE'$asunto%'";
+
+    // SOLO TIPO
+    }else if($estado=='-' && $tipo!=0 && $asunto==''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.id_tipo = $tipo";
+
+    // ESTADO+ASUNTO
+    }else if($estado!='-' && $tipo==0 && $asunto!=''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' AND i.asunto LIKE '$asunto%'";
+    
+    // ESTADO+TIPO
+    }else if($estado!='-' && $tipo!=0 && $asunto==''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' AND i.id_tipo=$tipo";
+
+    // TIPO+ASUNTO
+    }else if($estado=='-' && $tipo!=0 && $asunto!=''){
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor AND i.id_tipo=$tipo AND i.asunto LIKE '$asunto%'";
+    }else{
+        $sql = "SELECT *
+        FROM incidencias i
+        INNER JOIN tipos t
+            on t.id_tipo = i.id_tipo
+        INNER JOIN aulas a
+            on a.id_aula = i.id_aula
+        INNER JOIN grupos g
+            on g.id_grupo = i.id_grupo
+        WHERE i.id_profesor = $idProfesor";
+    }
+    
 
     $result = $conn->query($sql);
     $json = "";
@@ -40,11 +130,11 @@ try {
 
         echo "[$json]";
     } else {
-        echo "[{\"id\": \"sin\"}]";
+        echo "[{\"id\": \"nada\"}]";
     }
     $conn->close();
 } catch (\Throwable $th) {
-    echo "$result";
+    echo "$result  (id: $idProfesor, estado: $estado, tipo: $tipo, asunto: $asunto)";
 }
 
 ?>

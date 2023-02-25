@@ -46,6 +46,13 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
         <div class="pb-8 pr-8 pt-32">
+            <div class="p-3 bg-gray-800 rounded mb-5 flex justify-center items-center rounded-lg">
+                <img id="iconoTiempo" width="42">
+                <div class="ml-3">
+                    <p id="tiempoNum" class="text-white text-xl font-light"></p>
+                    <p class="text-xs text-white opacity-80 font-light">Madrid</p>
+                </div>
+            </div>
             <div class="flex flex-col pl-5">
                 <a href="perfil.php" class="flex mb-3 text-sm hover:ml-3 hover:font-semibold duration-300">
                     <img src="svg/iconos/perfil_icon.svg" alt="Icono de usuario" class="mr-2"> Mi perfil</a>

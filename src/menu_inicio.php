@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <?php
-    session_start();
-    if(!isset($_SESSION['id'])){
-        header("Location: index.php");
-    }else if($_SESSION['id'] == 1){
-        header("Location: adm_menu_inicio.php");
-    }
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location: index.php");
+} else if ($_SESSION['id'] == 1) {
+    header("Location: adm_menu_inicio.php");
+}
 ?>
 
 <head>
@@ -16,10 +16,8 @@
     <link rel="stylesheet" href="styles/general.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
-    <script
-        src="https://code.jquery.com/jquery-3.6.3.js"
-        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <title>Sistema de Incidencias del IES Pío Baroja</title>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -37,7 +35,7 @@
                     <img src="svg/iconos/inicio_icon_sm.svg" alt="Icono de inicio" class="pr-3"> Inicio</a>
                 <a href="nueva_incidencia.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-teal-800 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/nueva_incidencia_icon_sm.svg" alt="Icono de nueva incidencia" class="pr-3"> Nueva incidencia</a>
-                <a href="incidencias_activas.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-orange-900 hover:text-white px-5 py-3 flex mb-2">
+                <a href="incidencias_activas.php" class="tracking-tight duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-orange-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/incidencias_activas_icon_sm.svg" alt="Icono de incidencias activas" class="pr-3"> Incidencias activas</a>
                 <a href="historial.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-pink-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/historial_icon_sm.svg" alt="Icono de historial" class="pr-3"> Historial</a>
@@ -46,6 +44,13 @@
             </div>
         </div>
         <div class="pb-8 pr-8 pt-32">
+            <div class="p-3 bg-gray-800 rounded mb-5 flex justify-center items-center rounded-lg">
+                <img id="iconoTiempo" width="42">
+                <div class="ml-3">
+                    <p id="tiempoNum" class="text-white text-xl font-light"></p>
+                    <p class="text-xs text-white opacity-80 font-light">Madrid</p>
+                </div>
+            </div>
             <div class="flex flex-col pl-5">
                 <a href="perfil.php" class="flex mb-3 text-sm hover:ml-3 hover:font-semibold duration-300">
                     <img src="svg/iconos/perfil_icon.svg" alt="Icono de usuario" class="mr-2"> Mi perfil</a>

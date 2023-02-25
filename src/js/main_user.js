@@ -31,6 +31,9 @@ function eventos() {
     document.getElementById("inicioLogo").addEventListener("click", irInicio);
     document.getElementById("perfilDatos").addEventListener("click", irPerfil);
 
+    // TIEMPO
+    mostrarTiempo();
+
     // CERRAR SESIÓN
     document.getElementById("cerrarSesion").addEventListener("click", peticionCerrarSesion);
 }
@@ -79,4 +82,43 @@ function respuestaCerrarSesion(){
                 break;
         }
     }
+}
+
+function mostrarTiempo(){
+    const clave = "48d76f5f2a0303eae4f6f047b4a48281";
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Madrid&units=metric&appid=${clave}`)
+        .then(response => response.json())
+        .then(json => {
+            if(json.cod == '404'){
+                console.log("Tiempo no disponible");
+            }else{
+                let iconoTiempoResultado;
+                switch (json.weather[0].main) {
+                    case 'Clear':
+                    iconoTiempoResultado = './svg/tiempo/soleado.svg';
+                    break;
+
+                    case 'Rain':
+                    iconoTiempoResultado = './svg/tiempo/lluvia.svg';
+                    break;
+
+                    case 'Snow':
+                    iconoTiempoResultado = './svg/tiempo/nieve.svg';
+                    break;
+
+                    case 'Clouds':
+                    iconoTiempoResultado = './svg/tiempo/nublado.svg';
+                    break;
+
+                    case 'Haze':
+                    iconoTiempoResultado = './svg/tiempo/niebla.svg';
+                    break;
+
+                    default:
+                    image.src = '';
+                }
+                document.getElementById("iconoTiempo").setAttribute("src", iconoTiempoResultado);
+                document.getElementById("tiempoNum").textContent = `${json.main.temp}º`;
+            }
+        });
 }

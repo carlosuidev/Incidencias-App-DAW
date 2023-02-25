@@ -34,9 +34,9 @@ function respuestaIncidencias() {
                     // ESTADO
                     const etiquetaEstado = document.createElement("p");
                     if (incidencia.estado == "TERMINADA") {
-                        etiquetaEstado.setAttribute("class", "text-xs px-2 py-0.5 rounded-full w-fit mb-3 bg-green-500 text-white font-semibold");
+                        etiquetaEstado.setAttribute("class", "text-xs px-2 py-0.5 rounded-full w-fit mb-3 bg-green-200 text-green-500 font-bold");
                     } else if (incidencia.estado == "EN PROCESO") {
-                        etiquetaEstado.setAttribute("class", "text-xs px-2 py-0.5 rounded-full w-fit mb-3 bg-orange-500 text-white font-semibold");
+                        etiquetaEstado.setAttribute("class", "text-xs px-2 py-0.5 rounded-full w-fit mb-3 bg-orange-200 text-orange-500 font-bold");
                     }
                     etiquetaEstado.textContent = `${incidencia.estado}`;
                     cabecera.appendChild(etiquetaEstado);
