@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <?php
-session_start();
-if (!isset($_SESSION['id'])) {
-    header("Location: index.php");
-} else if ($_SESSION['id'] == 1) {
-    header("Location: adm_menu_inicio.php");
-}
+    session_start();
+    if(!isset($_SESSION['id'])){
+        header("Location: index.php");
+    }else if($_SESSION['id'] == 1){
+        header("Location: adm_menu_inicio.php");
+    }
 ?>
 
 <head>
@@ -86,8 +86,8 @@ if (!isset($_SESSION['id'])) {
                         <h2 class="text-2xl font-bold text-teal-900 mb-3">Nueva incidencia</h2>
                         <img src="svg/iconos/nueva_incidencia_icon_lg.svg" alt="Icono de nueva incidencia" class="pr-4">
                     </div>
-                    <div>
-                        <img  src="svg/nueva_incidencia_illustration.svg" alt="Mujer reperando un robot">
+                    <div class="flex justify-end img-btn">
+                        <img src="svg/nueva_incidencia_illustration.svg" alt="Mujer reperando un robot" width="196px">
                     </div>
                     
                 </div>
@@ -96,19 +96,17 @@ if (!isset($_SESSION['id'])) {
                         <h2 class="text-2xl font-bold text-orange-900 mb-3">Incidencias activas</h2>
                         <img src="svg/iconos/incidencias_activas_icon_lg.svg" alt="Icono de incidencias activas">
                     </div>
-                    <div class="justify-items-end">
-                        <img  src="svg/incidencias_activas_illustration.svg" alt="Robot utilanzdo tecnología futurista">
+                    <div class="flex justify-end img-btn">
+                        <img src="svg/incidencias_activas_illustration.svg" alt="Robot utilanzdo tecnología futurista" width="196px">
                     </div>
                 </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                 <div id="historialIncidencias" class="cursor-pointer py-4 px-8 bg-pink-100 w-full overflow-hidden border border-pink-300 rounded-xl hover:border-pink-900 hover:shadow-lg transition duration-300 flex justify-between items-center flex-wrap">
                     <div>
                         <h2 class="text-2xl font-bold text-pink-900 mb-3">Historial</h2>
                         <img src="svg/iconos/historial_icon_lg.svg" alt="Icono de historial">
                     </div>
-                    <div class="justify-items-end">
-                        <img  src="svg/historial_illustration.svg" alt="Mujer revisando una pizarra">
+                    <div class="flex justify-end img-btn">
+                        <img  src="svg/historial_illustration.svg" alt="Mujer revisando una pizarra" width="196px">
                     </div>
                 </div>
                 <div id="educamadridIncidencias" class="cursor-pointer py-4 px-8 bg-blue-100 w-full overflow-hidden border border-blue-300 rounded-xl hover:border-blue-900 hover:shadow-lg transition duration-300 flex justify-between items-center flex-wrap">
@@ -116,8 +114,8 @@ if (!isset($_SESSION['id'])) {
                         <h2 class="text-2xl font-bold text-blue-900 mb-3">Educamadrid</h2>
                         <img src="svg/iconos/educamadrid_icon_lg.svg" alt="Icono de Educamadrid">
                     </div>
-                    <div class="justify-items-end">
-                        <img  src="svg/educamadrid_illustration.png" alt="Educamadrid logotipo">
+                    <div class="flex justify-end img-btn">
+                        <img src="svg/educamadrid_illustration.png" alt="Educamadrid logotipo" width="128px">
                     </div>
                 </div>
             </div>

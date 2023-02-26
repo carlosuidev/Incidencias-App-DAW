@@ -12,13 +12,12 @@ function eventos() {
 
 function peticionHistorial() {
     xhrHistorial.onreadystatechange = respuestaHistorial;
-    xhrHistorial.open("POST", "server/historial_incidencias.php", true);
+    xhrHistorial.open("POST", "server/admin/historial_incidencias.php", true);
     xhrHistorial.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    const idProfesor = document.getElementById("idProfesor");
     const estado = document.getElementById("estado");
     const tipo = document.getElementById("tipo");
     const asunto = document.getElementById("asunto");
-    xhrHistorial.send(`id_profesor=${idProfesor.value}&estado=${estado.value}&tipo=${tipo.value}&asunto=${asunto.value}`);
+    xhrHistorial.send(`estado=${estado.value}&tipo=${tipo.value}&asunto=${asunto.value}`);
 }
 
 function respuestaHistorial() {
@@ -47,9 +46,7 @@ function respuestaHistorial() {
             const tdEstado = tr.insertCell(4);
             if (fila.estado == "EN PROCESO") {
                 tdEstado.setAttribute("class", "px-5 py-3 text-xs w-fit mb-3 text-orange-500 font-bold");
-            } else if(fila.estado == "ARCHIVADA"){
-                tdEstado.setAttribute("class", "px-5 py-3 text-xs w-fit mb-3 text-blue-500 font-bold");
-            }else{
+            } else {
                 tdEstado.setAttribute("class", "px-5 py-3 text-xs w-fit mb-3 text-green-500 font-bold");
             }
             tdEstado.textContent = fila.estado;
@@ -148,7 +145,7 @@ function ficha() {
                 }
                 contenedor.appendChild(principal);
 
-                window.location.href = "http://localhost/incidencias-app-daw/src/historial.php#fichaCompleta";
+                window.location.href = "http://localhost/incidencias-app-daw/src/adm_historial.php#fichaCompleta";
         });
     }
 }

@@ -10,7 +10,7 @@ CREATE TABLE `departamentos`(
     PRIMARY KEY (`id_departamento`)
 );
 INSERT INTO `departamentos`(`departamento`) VALUES
-('Admindistrador de Incidencias'),
+('Administrador de Incidencias'),
 ('SERVICIOS A LA COMUNIDAD'),
 ('ADMINISTRACIÓN Y GESTIÓN'),
 ('COMERCIO Y MARKETING'),
@@ -38,8 +38,8 @@ INSERT INTO `profesores`(`usuario`, `nombre`, `apellidos`, `correo`, `pass`, `id
 ('CTIC', 'CTIC', 'Administrador', 'admin@educa.madrid.org', 'CTICPio2023', 1),
 ('raulprofe', 'Raúl', 'Blázquez Rubio', 'raul@educa.madrid.org', 'Profesor1', 5),
 ('maiteprofe', 'María Teresa', 'Blázquez Rubio', 'maite@educa.madrid.org', 'Profesor1', 5),
-('jaunprofe', 'Juan', 'Martínez Val', 'juan@educa.madrid.org', 'Profesor1', 9),
-('javierprofe', 'Javier', 'Sánchez Bosch', 'javier@educa.madrid.org', 'Profesor1', 7);
+('juanprofe', 'Juan', 'Martínez Val', 'juan@educa.madrid.org', 'Profesor1', 3),
+('javierprofe', 'Javier', 'Sánchez Bosch', 'javier@educa.madrid.org', 'Profesor1', 8);
 
 
 DROP TABLE IF EXISTS `aulas`;
@@ -75,8 +75,8 @@ CREATE TABLE `incidencias`(
     `id_profesor` int NOT NULL,
     `id_grupo` int NOT NULL,
     `asunto` VARCHAR(64),
-    `descripcion` VARCHAR(250) NOT NULL,
-    `respuesta` VARCHAR(64),
+    `descripcion` VARCHAR(550) NOT NULL,
+    `respuesta` VARCHAR(550),
     `estado` VARCHAR(12) NOT NULL,
     `id_tipo` INT NOT NULL,
     `fecha` VARCHAR(10) NOT NULL,
@@ -88,6 +88,6 @@ CREATE TABLE `incidencias`(
     FOREIGN KEY (`id_tipo`) REFERENCES `tipos`(`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO `incidencias`(`id_profesor`, `id_grupo`, `asunto`, `descripcion`, `respuesta`, `estado`, `id_tipo`, `fecha`, `id_aula`)VALUES
-(2, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando', 'TERMINADA', 1,'10/10/2022', 8),
-(2, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz','Debes presionar el botón de encendido, durante 5 segundos del mando', 'TERMINADA', 3,'20/12/2022', 3),
-(2, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales','', 'EN PROCESO', 4,'20/12/2022', 1);
+(2, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando.', 'TERMINADA', 1,'10/10/2022', 8),
+(2, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz.','Debes presionar el botón de encendido, durante 5 segundos el mando.', 'TERMINADA', 3,'20/12/2022', 3),
+(2, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales.','', 'EN PROCESO', 4,'20/12/2022', 1);

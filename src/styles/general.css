@@ -30,6 +30,81 @@ aside::-webkit-scrollbar-thumb {
     display: none;
 }
 
+@media (min-width: 640px) and (max-width: 1279px){
+    .img-btn{
+        width: 100% !important;
+        padding-top: 2rem !important;
+    }
+}
+
+@media (max-width: 525px){
+    .img-btn{
+        width: 100% !important;
+        padding-top: 2rem !important;
+    }
+}
+
+@media (max-width: 282px){
+    .img-btn{
+        width: 100% !important;
+        padding-top: 2rem !important;
+    }
+
+    #nuevaIncidencia h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+
+    #incidenciasActivas h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+    
+    #educamadridIncidencias h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+    
+    #historialIncidencias h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+
+    #nuevaIncidencia,#incidenciasActivas,#educamadridIncidencias,#historialIncidencias{
+        padding-left: 1.3rem !important;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 735px){
+    #nuevaIncidencia h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+
+    #incidenciasActivas h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+    
+    #educamadridIncidencias h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+    
+    #historialIncidencias h2{
+        font-size: 1.2rem !important;
+        line-height: 1.6rem !important;
+    }
+
+    #nuevaIncidencia,#incidenciasActivas,#educamadridIncidencias,#historialIncidencias{
+        padding-left: 1.3rem !important;
+    }
+
+    .img-btn{
+        display: none !important;
+    }
+}
+
 @media (max-width: 640px) {
     #hamburger{
         display: block;

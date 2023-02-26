@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <?php
-    session_start();
-    if(!isset($_SESSION['id'])){
-        header("Location: index.php");
-    }else if($_SESSION['id'] == 1){
-        header("Location: adm_menu_inicio.php");
-    }
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location: index.php");
+} else if ($_SESSION['id'] == 1) {
+    header("Location: adm_menu_inicio.php");
+}
 ?>
 
 <head>
@@ -16,10 +16,7 @@
     <link rel="stylesheet" href="styles/general.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
-    <script
-        src="https://code.jquery.com/jquery-3.6.3.js"
-        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <title>Sistema de Incidencias del IES Pío Baroja</title>
 </head>
 
@@ -74,13 +71,14 @@
                 <div class="flex cursor-pointer" id="perfilDatos">
                     <img src="svg/iconos/profile.svg" alt="Usuario" class="mr-3">
                     <div>
-                        <p class="text-sm font-medium flex"><?php echo $_SESSION["nombre"]?><span class="sm:block hidden ml-1"><?php echo $_SESSION["apellidos"] ?></span></p>
-                        <p class="text-xs text-gray-400"><?php echo $_SESSION["rol"]?></p>
+                        <p class="text-sm font-medium flex"><?php echo $_SESSION["nombre"] ?><span class="sm:block hidden ml-1"><?php echo $_SESSION["apellidos"] ?></span></p>
+                        <p class="text-xs text-gray-400"><?php echo $_SESSION["rol"] ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
     <section id="main-content" class="p-8 ml-0 sm:ml-56">
         <div class="container mx-auto">
             <div class="bg-pink-900 rounded p-8 flex mb-5 shadow flex-col items-start justify-center">
@@ -93,7 +91,7 @@
 
             <div class="rounded p-8 bg-white shadow">
                 <div class="flex flex-wrap gap-5">
-                    <input type="hidden" value="<?php echo $_SESSION['id']?>" id="idProfesor">
+                    <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="idProfesor">
                     <div class="flex flex-col">
                         <label for="asunto" class="text-sm font-semibold">Asunto</label>
                         <input type="text" name="asunto" id="asunto" placeholder="Ej: Ratón no funciona" class="bg-gray-100 p-2 rounded w-full border mt-2 border border-gray-300 text-sm">
@@ -121,9 +119,13 @@
                     </div>
                 </div>
                 <hr class="my-5">
+                
+                <div id="fichaCompleta">
+                </div>
+                
                 <div class="overflow-x-auto w-full">
-                    <table class="table-fixed text-left rounded-lg w-full text-sm overflow-hidden">
-                        <thead> 
+                    <table class="lg:table-fixed md:table-auto sm:table-auto text-left rounded-lg w-full text-sm">
+                        <thead>
                             <tr class="border bg-gray-200 text-xs">
                                 <th class="py-3 px-2">ASUNTO</th>
                                 <th class="py-3 px-2">TIPO</th>
@@ -134,13 +136,17 @@
                                 <th class="py-3 px-2"></th>
                             </tr>
                         </thead>
-                        <tbody id="tbody" class="divide-y">
+                        <tbody id="tbody">
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
+
+    
+
     <script src="js/main_user.js"></script>
     <script src="js/historial.js"></script>
     <script src="js/extras_jquery.js"></script>

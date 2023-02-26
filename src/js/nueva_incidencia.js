@@ -61,7 +61,7 @@ function mostrarGrupos(){
 function validarAsunto(){
     const asunto = document.getElementById("asunto");
     const asuntoAlert = document.getElementById("asuntoAlert");
-    if(/^[A-Za-z0-9.-ªº ]*$/.test(asunto.value) && (asunto.value).length<=64 && (asunto.value).length>10){
+    if(/^[A-Za-z0-9áéíóúÁÉÍÓÚÑñ.-ªº ]*$/.test(asunto.value) && (asunto.value).length<=64 && (asunto.value).length>10){
         asuntoAlert.style.display = "none";
         asunto.style.border = "1px solid green";
         return false;
@@ -75,7 +75,7 @@ function validarAsunto(){
 function validarMensaje(){
     const descripcion = document.getElementById("descripcion");
     const descripcionAlert = document.getElementById("descripcionAlert");
-    if(/^[A-Za-z0-9.-ªº ]*$/.test(descripcion.value) && (descripcion.value).length<=250 && (descripcion.value).length>20){
+    if(/^[A-Za-z0-9áéíóúÁÉÍÓÚÑñ.-ªº ]*$/.test(descripcion.value) && (descripcion.value).length<=550 && (descripcion.value).length>20){
         descripcionAlert.style.display = "none";
         descripcion.style.border = "1px solid green";
         return false;

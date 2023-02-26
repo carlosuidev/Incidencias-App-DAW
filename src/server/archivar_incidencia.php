@@ -16,9 +16,9 @@ try {
     $sql = "UPDATE incidencias SET estado='ARCHIVADA' WHERE id_incidencia=$id";
 
     if ($conn->query($sql) === TRUE) {
-        header('historial_incidencias.php');
+        echo "[{\"msg\": \"archivada\"}]";
     } else {
-        header('historial_incidencias.php');
+        echo "[{\"msg\": \"mal\"}]";
     }
 } catch (\Throwable $th) {
     // error

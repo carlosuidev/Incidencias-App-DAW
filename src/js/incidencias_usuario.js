@@ -81,24 +81,12 @@ function respuestaIncidencias() {
                         principal.appendChild(resp);
 
                         //ARCHIVAR
-                        const form = document.createElement("form");
-                        form.setAttribute("method", "POST");
-                        form.setAttribute("action", "server/archivar_incidencia.php");
-
-                        const hidden = document.createElement("input");
-                        hidden.setAttribute("type", "hidden");
-                        hidden.setAttribute("id", "id");
-                        hidden.setAttribute("name", "id");
-                        hidden.setAttribute("value", incidencia.id);
-                        form.appendChild(hidden);
-
                         const btn = document.createElement("input");
-                        btn.setAttribute("type", "submit");
+                        btn.setAttribute("type", "button");
                         btn.setAttribute("class", "w-full bg-teal-800 duration-300 cursor-pointer hover:bg-teal-900 text-white rounded font-semibold py-2");
                         btn.setAttribute("value", "Archivar");
-                        form.appendChild(btn);
-
-                        contenedor.appendChild(form);
+                        btn.setAttribute("onclick", `peticionArchivar(${incidencia.id})`)
+                        contenedor.appendChild(btn);
                     }
 
                     listado.appendChild(contenedor);
@@ -112,5 +100,26 @@ function respuestaIncidencias() {
         }
 
 
+    }
+}
+
+const xhrArchivar = new XMLHttpRequest();
+
+function peticionArchivar(id){
+    xhrArchivar.onreadystatechange = archivarIncidencia;
+    xhrArchivar.open("POST", "server/archivar_incidencia.php", true);
+    xhrArchivar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhrArchivar.send(`id=${id}`);
+}
+
+function archivarIncidencia() {
+    if (xhrArchivar.readyState == 4 && xhrArchivar.status == 200) {
+        let respuestaJson = JSON.parse(xhrArchivar.responseText);
+
+        let resultado = respuestaJson[0].msg;
+
+        if(resultado == "archivada"){
+            window.location.href = "historial.php";
+        }
     }
 }

@@ -6,21 +6,15 @@ const xhrSesion = new XMLHttpRequest();
 function eventos() {
     // REDIRECCIONES
     try {
-        document.getElementById("nuevaIncidencia").addEventListener("click", irNuevaIncidencia);
-    } catch (error) {
-        console.log("Sin redirigir a Nueva Incidencia");
-    }
-
-    try {
         document.getElementById("educamadridIncidencias").addEventListener("click", irEducamadrid);
     } catch (error) {
         console.log("Sin redirigir a EducaMadrid");
     }
 
     try {
-        document.getElementById("incidenciasActivas").addEventListener("click", irIncidenciasActivas);
+        document.getElementById("incidencias").addEventListener("click", irIncidencias);
     } catch (error) {
-        console.log("Sin redirigir a Incidencias activas");
+        console.log("Sin redirigir a Incidencias");
     }
 
     try {
@@ -40,19 +34,15 @@ function eventos() {
 }
 
 function irInicio() {
-    window.location.href = "menu_inicio.php";
+    window.location.href = "adm_menu_inicio.php";
 }
 
-function irNuevaIncidencia() {
-    window.location.href = "nueva_incidencia.php";
-}
-
-function irIncidenciasActivas() {
-    window.location.href = "incidencias_activas.php";
+function irIncidencias() {
+    window.location.href = "adm_incidencias.php";
 }
 
 function irHistorial() {
-    window.location.href = "historial.php";
+    window.location.href = "adm_historial.php";
 }
 
 function irEducamadrid() {
@@ -60,7 +50,7 @@ function irEducamadrid() {
 }
 
 function irPerfil(){
-    window.location.href = "perfil.php";
+    window.location.href = "adm_perfil.php";
 }
 
 function peticionCerrarSesion(){

@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 }
 
 try {
-    $idProfesor = $_REQUEST['id_profesor'];
     $estado = $_REQUEST['estado'];
     $tipo = $_REQUEST['tipo'];
     $asunto = $_REQUEST['asunto'];
@@ -28,7 +27,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' AND i.id_tipo=$tipo AND estado='$estado' ORDER BY i.id_incidencia DESC";
+        WHERE i.estado='$estado' AND i.id_tipo=$tipo AND estado='$estado' ORDER BY i.id_incidencia DESC";
     
     // SOLO ESTADO
     }else if($estado!='-' && $tipo==0 && $asunto==''){
@@ -40,7 +39,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.estado='$estado'  ORDER BY i.id_incidencia DESC";
+        WHERE i.estado='$estado'  ORDER BY i.id_incidencia DESC";
     
     // SOLO ASUNTO
     }else if($estado=='-' && $tipo==0 && $asunto!=''){
@@ -52,7 +51,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.asunto LIKE'$asunto%' ORDER BY i.id_incidencia DESC";
+        WHERE i.asunto LIKE'$asunto%' ORDER BY i.id_incidencia DESC";
 
     // SOLO TIPO
     }else if($estado=='-' && $tipo!=0 && $asunto==''){
@@ -64,7 +63,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.id_tipo = $tipo ORDER BY i.id_incidencia DESC";
+        WHERE i.id_tipo = $tipo ORDER BY i.id_incidencia DESC";
 
     // ESTADO+ASUNTO
     }else if($estado!='-' && $tipo==0 && $asunto!=''){
@@ -76,7 +75,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' AND i.asunto LIKE '$asunto%' ORDER BY i.id_incidencia DESC";
+        WHERE i.estado='$estado' AND i.asunto LIKE '$asunto%' ORDER BY i.id_incidencia DESC";
     
     // ESTADO+TIPO
     }else if($estado!='-' && $tipo!=0 && $asunto==''){
@@ -88,7 +87,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.estado='$estado' AND i.id_tipo=$tipo ORDER BY i.id_incidencia DESC";
+        WHERE i.estado='$estado' AND i.id_tipo=$tipo ORDER BY i.id_incidencia DESC";
 
     // TIPO+ASUNTO
     }else if($estado=='-' && $tipo!=0 && $asunto!=''){
@@ -100,7 +99,7 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor AND i.id_tipo=$tipo AND i.asunto LIKE '$asunto%' ORDER BY i.id_incidencia DESC";
+        WHERE i.id_tipo=$tipo AND i.asunto LIKE '$asunto%' ORDER BY i.id_incidencia DESC";
     }else{
         $sql = "SELECT *
         FROM incidencias i
@@ -109,8 +108,7 @@ try {
         INNER JOIN aulas a
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
-            on g.id_grupo = i.id_grupo
-        WHERE i.id_profesor = $idProfesor ORDER BY i.id_incidencia DESC";
+            on g.id_grupo = i.id_grupo ORDER BY i.id_incidencia DESC";
     }
     
 
@@ -134,7 +132,7 @@ try {
     }
     $conn->close();
 } catch (\Throwable $th) {
-    echo "$result  (id: $idProfesor, estado: $estado, tipo: $tipo, asunto: $asunto)";
+    echo "$result  (estado: $estado, tipo: $tipo, asunto: $asunto)";
 }
 
 ?>

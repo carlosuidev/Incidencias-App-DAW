@@ -25,6 +25,10 @@ if ($conn->connect_error) {
 
             if(1 == $row['id_profesor']){
                 $_SESSION["rol"] = "Administrador/a";
+            }else if(3 == $row['id_departamento']){
+                $_SESSION["rol"] = "Gestor/a";
+            }else if(8 == $row['id_departamento']){
+                $_SESSION["rol"] = "Orientador/a";
             }else{
                 $_SESSION["rol"] = "Profesor/a";
             }

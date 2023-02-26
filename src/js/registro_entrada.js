@@ -183,7 +183,6 @@ function registrarProfesor(){
     if(xhr.readyState == 4 && xhr.status == 200){
         const inicioSesion = document.getElementById("inicioSesion");
         let respuestaJson = JSON.parse(xhr.responseText);
-        console.log(respuestaJson[0].msg);
         if(respuestaJson[0].msg == "guardado"){
             inicioSesion.style.display = "block";
         }

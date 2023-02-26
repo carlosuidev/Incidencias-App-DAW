@@ -33,7 +33,7 @@
             <div class="mt-5">
                 <a href="adm_menu_inicio.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in border-4 border-white hover:bg-gray-200 hover:bg-teal-800 hover:border-teal-800 hover:text-white px-4 py-2 flex mb-2">
                     <img src="svg/iconos/inicio_icon_sm.svg" alt="Icono de inicio" class="pr-3"> Inicio</a>
-                <a href="adm_incidencias.php" class="tracking-tighter duration-300 flex items-center font-bold tracking-tight text-sm rounded-l-lg transition ease-in border-4 border-gray-200 border-r-orange-900 bg-gray-200 hover:bg-gray-200 hover:bg-orange-900 hover:border-orange-900 hover:text-white px-4 py-2 flex mb-2">
+                <a href="adm_incidencias.php" class="tracking-tight duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-orange-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/incidencias_activas_icon_sm.svg" alt="Icono de resolver incidencias" class="pr-3">Resolver incidencias</a>
                 <a href="adm_historial.php" class="duration-300 flex items-center text-sm rounded-l-lg transition ease-in hover:bg-pink-900 hover:text-white px-5 py-3 flex mb-2">
                     <img src="svg/iconos/historial_icon_sm.svg" alt="Icono de historial" class="pr-3"> Historial</a>
@@ -77,11 +77,53 @@
         </div>
     </nav>
     <section id="main-content" class="p-8 ml-0 sm:ml-56">
-        
+    <div class="container mx-auto">
+            <div class="bg-white rounded p-8">
+                <div class="flex justify-between items-center flex-wrap">
+                    <div class="flex">
+                        <img src="svg/iconos/profile.svg" alt="Perfil" width="42" class="rounded-full mr-3">
+                        <div>
+                            <h2 class="text-xl font-semibold"><?php echo $_SESSION['nombre']." ".$_SESSION['apellidos'] ?></h2>
+                            <p class="text-sm text-gray-600"><?php echo $_SESSION['rol'] ?></p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border my-5">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 p-5">
+                    <input type="hidden" name="idProfesor" id="idProfesor" value="<?php echo $_SESSION['id'] ?>">
+                    <p class="font-semibold">Usuario: <span class="font-normal" id="datoUsuario"></span></p>
+                    <p class="font-semibold">Nombre: <span class="font-normal" id="datoNombre"></span></p>
+                    <p class="font-semibold">Apellidos: <span class="font-normal" id="datoApellidos"></span></p>
+                    <p class="font-semibold">Departamento: <span class="font-normal" id="datoDepartamento"></span></p>
+                    <p class="font-semibold">Correo electrónico: <span class="font-normal" id="datoCorreo"></span></p>
+                    <p class="font-semibold">Contraseña: <span class="font-normal">********</span></p>
+                </div>
+
+                <form class="bg-white rounded p-16">
+                    <p id="salidaUpdate"></p>
+                    <h3 class=" font-bold text-xl">Actualiza tu contraseña</h3>
+                    <hr class="my-5">
+                    <div class="flex flex-col mb-5">
+                        <label for="contrasenaActual" class="font-semibold">Contraseña actual</label>
+                        <input type="password" name="contrasenaActual" id="contrasenaActual"
+                        class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
+                        placeholder="Tu contraseña actual">
+                    </div>
+                    <div class="flex flex-col mb-5">
+                        <label for="contrasenaNueva" class="font-semibold">Contraseña nueva</label>
+                        <input type="password" name="contrasenaNueva" id="contrasenaNueva"
+                            class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"
+                            placeholder="Tu contraseña nueva">
+                        <small id="contrasenaAlert" class="hidden text-red-400 mt-1 pl-2">Escriba una contraseña con mínimo una mayúscula y un número</small>
+                    </div>
+                    <input type="button" id="actualizar" value="Actualizar datos" class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-8">
+                </form>
+            </div>
+        </div>
     </section>
     <script src="js/admin/main_admin.js"></script>
     <script src="js/extras_jquery.js"></script>
-    <script src="js/admin/adm_incidencias.js"></script>
+    <script src="js/perfil.js"></script>
 </body>
 
 </html>
