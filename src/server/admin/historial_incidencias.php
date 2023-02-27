@@ -27,6 +27,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.estado='$estado' AND i.id_tipo=$tipo AND estado='$estado' ORDER BY i.id_incidencia DESC";
     
     // SOLO ESTADO
@@ -39,6 +41,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.estado='$estado'  ORDER BY i.id_incidencia DESC";
     
     // SOLO ASUNTO
@@ -51,6 +55,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.asunto LIKE'$asunto%' ORDER BY i.id_incidencia DESC";
 
     // SOLO TIPO
@@ -63,6 +69,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.id_tipo = $tipo ORDER BY i.id_incidencia DESC";
 
     // ESTADO+ASUNTO
@@ -75,6 +83,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.estado='$estado' AND i.asunto LIKE '$asunto%' ORDER BY i.id_incidencia DESC";
     
     // ESTADO+TIPO
@@ -87,6 +97,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.estado='$estado' AND i.id_tipo=$tipo ORDER BY i.id_incidencia DESC";
 
     // TIPO+ASUNTO
@@ -99,6 +111,8 @@ try {
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
             on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
         WHERE i.id_tipo=$tipo AND i.asunto LIKE '$asunto%' ORDER BY i.id_incidencia DESC";
     }else{
         $sql = "SELECT *
@@ -108,7 +122,10 @@ try {
         INNER JOIN aulas a
             on a.id_aula = i.id_aula
         INNER JOIN grupos g
-            on g.id_grupo = i.id_grupo ORDER BY i.id_incidencia DESC";
+            on g.id_grupo = i.id_grupo
+        INNER JOIN profesores p
+            on p.id_profesor = i.id_profesor
+        ORDER BY i.id_incidencia DESC";
     }
     
 
@@ -119,9 +136,9 @@ try {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
             if($i == $result->num_rows){
-                $json = $json." "."{\"id\": \"$row[id_incidencia]\", \"grupo\": \"$row[grupo]\", \"tipo\": \"$row[tipo]\", \"asunto\": \"$row[asunto]\", \"respuesta\": \"$row[respuesta]\", \"descripcion\": \"$row[descripcion]\", \"estado\": \"$row[estado]\", \"fecha\": \"$row[fecha]\", \"aula\": \"$row[aula]\"}";
+                $json = $json." "."{\"id\": \"$row[id_incidencia]\", \"grupo\": \"$row[grupo]\", \"tipo\": \"$row[tipo]\", \"asunto\": \"$row[asunto]\", \"respuesta\": \"$row[respuesta]\", \"descripcion\": \"$row[descripcion]\", \"estado\": \"$row[estado]\", \"fecha\": \"$row[fecha]\", \"aula\": \"$row[aula]\", \"nombre\": \"$row[nombre]\", \"apellidos\": \"$row[apellidos]\"}";
             }else{
-                $json = $json." "."{\"id\": \"$row[id_incidencia]\", \"grupo\": \"$row[grupo]\", \"tipo\": \"$row[tipo]\", \"asunto\": \"$row[asunto]\", \"respuesta\": \"$row[respuesta]\", \"descripcion\": \"$row[descripcion]\", \"estado\": \"$row[estado]\", \"fecha\": \"$row[fecha]\", \"aula\": \"$row[aula]\"},";
+                $json = $json." "."{\"id\": \"$row[id_incidencia]\", \"grupo\": \"$row[grupo]\", \"tipo\": \"$row[tipo]\", \"asunto\": \"$row[asunto]\", \"respuesta\": \"$row[respuesta]\", \"descripcion\": \"$row[descripcion]\", \"estado\": \"$row[estado]\", \"fecha\": \"$row[fecha]\", \"aula\": \"$row[aula]\", \"nombre\": \"$row[nombre]\", \"apellidos\": \"$row[apellidos]\"},";
             }
             $i++;
         }

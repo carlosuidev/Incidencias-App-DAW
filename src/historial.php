@@ -101,7 +101,7 @@ if (!isset($_SESSION['id'])) {
                         <select name="estado" id="estado" class="bg-gray-100 p-2 rounded w-full border mt-2 border border-gray-300 text-sm">
                             <option value="-">Cualquiera</option>
                             <option value="EN PROCESO">EN PROCESO</option>
-                            <option value="FINALIZADA">FINALIZADA</option>
+                            <option value="TERMINADA">TERMINADA</option>
                             <option value="ARCHIVADA">ARCHIVADA</option>
                         </select>
                     </div>

@@ -77,7 +77,18 @@
         </div>
     </nav>
     <section id="main-content" class="p-8 ml-0 sm:ml-56">
-        
+        <div class="container mx-auto">
+            <div class="bg-orange-900 rounded p-8 flex mb-5 shadow flex-col items-start justify-center">
+                <div class="flex items-center mb-4">
+                    <img src="svg/iconos/incidencias_activas_icon_lg.svg" class="border border-white rounded-full mr-3" width="32">
+                    <h2 class="text-white text-2xl font-bold">Resolver incidencias</h2>
+                </div>
+                <p class="pl-10 text-white opacity-75 lg:w-1/2 sm:w-full">Responde las solicitudes que ocurran en el IES Pío Baroja.</p>
+            </div>
+
+            <div id="listaIncidencias" class="p-8 grid lg:grid-cols-2 md:grid-cols-1 gap-5">
+            </div>
+        </div>
     </section>
     <script src="js/admin/main_admin.js"></script>
     <script src="js/extras_jquery.js"></script>

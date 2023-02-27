@@ -98,7 +98,7 @@
                         <select name="estado" id="estado" class="bg-gray-100 p-2 rounded w-full border mt-2 border border-gray-300 text-sm">
                             <option value="-">Cualquiera</option>
                             <option value="EN PROCESO">EN PROCESO</option>
-                            <option value="FINALIZADA">FINALIZADA</option>
+                            <option value="TERMINADA">TERMINADA</option>
                             <option value="ARCHIVADA">ARCHIVADA</option>
                         </select>
                     </div>
@@ -126,8 +126,7 @@
                             <tr class="border bg-gray-200 text-xs">
                                 <th class="py-3 px-2">ASUNTO</th>
                                 <th class="py-3 px-2">TIPO</th>
-                                <th class="py-3 px-2">AULA</th>
-                                <th class="py-3 px-2">GRUPO</th>
+                                <th class="py-3 px-2">PROFESOR</th>
                                 <th class="py-3 px-2">ESTADO</th>
                                 <th class="py-3 px-2">FECHA</th>
                                 <th class="py-3 px-2"></th>

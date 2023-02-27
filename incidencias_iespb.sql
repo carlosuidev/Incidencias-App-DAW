@@ -89,5 +89,5 @@ CREATE TABLE `incidencias`(
 );
 INSERT INTO `incidencias`(`id_profesor`, `id_grupo`, `asunto`, `descripcion`, `respuesta`, `estado`, `id_tipo`, `fecha`, `id_aula`)VALUES
 (2, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando.', 'TERMINADA', 1,'10/10/2022', 8),
-(2, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz.','Debes presionar el botón de encendido, durante 5 segundos el mando.', 'TERMINADA', 3,'20/12/2022', 3),
+(2, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz.','Ya se ha asignado un cable a la impreosa. Puedes usarla sin problema.', 'ARCHIVADA', 3,'20/12/2022', 3),
 (2, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales.','', 'EN PROCESO', 4,'20/12/2022', 1);

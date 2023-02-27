@@ -13,21 +13,17 @@ if ($conn->connect_error) {
 }
 
 try {
-    $id= $_REQUEST['id'];
-
     $sql = "SELECT *
-        FROM incidencias i
-        INNER JOIN tipos t
-            on t.id_tipo = i.id_tipo
-        INNER JOIN aulas a
-            on a.id_aula = i.id_aula
-        INNER JOIN grupos g
-            on g.id_grupo = i.id_grupo
-        INNER JOIN profesores p
-            on p.id_profesor = i.id_profesor
-        WHERE i.id_incidencia = $id";
-        
-    
+    FROM incidencias i
+    INNER JOIN tipos t
+        on t.id_tipo = i.id_tipo
+    INNER JOIN aulas a
+        on a.id_aula = i.id_aula
+    INNER JOIN grupos g
+        on g.id_grupo = i.id_grupo
+    INNER JOIN profesores p
+        on p.id_profesor = i.id_profesor
+    WHERE i.estado = 'EN PROCESO'";
 
     $result = $conn->query($sql);
     $json = "";
@@ -45,11 +41,11 @@ try {
 
         echo "[$json]";
     } else {
-        echo "[{\"id\": \"nada\"}]";
+        echo "[{\"id\": \"sin\"}]";
     }
     $conn->close();
 } catch (\Throwable $th) {
-    echo "$result  (id: $idProfesor, estado: $estado, tipo: $tipo, asunto: $asunto)";
+    echo "$result";
 }
 
 ?>
