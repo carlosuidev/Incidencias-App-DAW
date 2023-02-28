@@ -3,6 +3,10 @@ addEventListener('DOMContentLoaded', eventos);
 const xhr = new XMLHttpRequest();
 const xhrSesion = new XMLHttpRequest();
 
+let tituloAnterior = document.title;
+window.addEventListener("blur", cambiarTitulo);
+window.addEventListener("focus", volverTitulo);
+
 function eventos() {
     // REDIRECCIONES
     try {
@@ -31,6 +35,15 @@ function eventos() {
 
     // CERRAR SESIÓN
     document.getElementById("cerrarSesion").addEventListener("click", peticionCerrarSesion);
+}
+
+function cambiarTitulo(){
+    tituloAnterior = document.title;
+    document.title = "¿Ya has terminado? Vuelve 🤔";
+}
+
+function volverTitulo() {
+    document.title = tituloAnterior;
 }
 
 function irInicio() {
