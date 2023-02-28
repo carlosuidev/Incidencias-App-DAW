@@ -20,7 +20,8 @@ if ($conn->connect_error) {
         while($row = mysqli_fetch_assoc($result)) {
             session_start();
             $_SESSION["nombre"] = $row["nombre"];
-            $_SESSION["apellidos"] = $row["apellidos"];
+            $arrApellidos = explode(" ", $row["apellidos"]);
+            $_SESSION["apellidos"] = $arrApellidos[0];
             $_SESSION["id"] = $row["id_profesor"];
 
             if(1 == $row['id_profesor']){

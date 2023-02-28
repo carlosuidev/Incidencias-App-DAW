@@ -10,6 +10,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
     <title>Sistema de Incidencias del IES Pío Baroja</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 
 <body class="bg-teal-900 text-gray-800">
@@ -18,7 +22,7 @@
             <div class="p-16 formulario-entrada" id="fondo-cabecera">
                 <h2 class="font-bold text-center text-white text-5xl">Resolución de incidencias</h2>
             </div>
-            <form class="bg-white rounded p-16">
+            <form class="bg-white rounded p-16 animate__animated animate__fadeInDown">
                 <img src="svg/logo_baroja.svg" alt="IES PÍO BAROJA" class="mb-5" width="132px">
                 <h3 class=" font-bold text-3xl">Regístrate</h3>
                 <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Ya tienes cuenta? <a

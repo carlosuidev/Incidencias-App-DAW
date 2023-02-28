@@ -21,6 +21,10 @@
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <title>Sistema de Incidencias del IES Pío Baroja</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -91,7 +95,7 @@
                 <p class="pl-10 text-white opacity-75 lg:w-1/2 sm:w-full">Solicita ayuda para que el equipo TIC pueda resolver los problemas que surgan en las aulas.</p>
             </div>
 
-            <div class="bg-white rounded p-8 shadow grid lg:grid-cols-2 md:grid-cols-1 gap-16">
+            <div class="animate__animated animate__fadeInUp bg-white rounded p-8 shadow grid lg:grid-cols-2 md:grid-cols-1 gap-16">
                 
                 <form>
                 <p id="msgError" class="hidden mb-5 text-center text-sm p-3 bg-red-200 rounded border text-red-700 border-red-700">No se ha podido procesar su solicitud. Si persigue contacte con el administrador.</p>
@@ -131,7 +135,7 @@
                     <input type="hidden" id="profesor" value="<?php echo $_SESSION['id'] ?>">
                     <input type="button" id="crearIncidencia" value="Enviar incidencia" class="px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold mt-3">
                 </form>
-                <img src="svg/nueva_incidencia_illustration.svg" alt="Mujer arreglando un robot" class="w-full p-8">
+                <img src="svg/nueva_incidencia_illustration.svg" alt="Mujer arreglando un robot" class="animate__animated animate__pulse animate__delay-1s w-full p-8">
             </div>
         </div>
     </section>

@@ -31,13 +31,15 @@ CREATE TABLE `profesores`(
     `correo` VARCHAR(128) NOT NULL UNIQUE,
     `pass` VARCHAR(15) NOT NULL,
     `id_departamento` INT NOT NULL,
+    `img_perfil` LONGBLOB NULL,
     PRIMARY KEY (`id_profesor`),
     FOREIGN KEY (`id_departamento`) REFERENCES `departamentos`(`id_departamento`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO `profesores`(`usuario`, `nombre`, `apellidos`, `correo`, `pass`, `id_departamento`) VALUES
 ('CTIC', 'CTIC', 'Administrador', 'admin@educa.madrid.org', 'CTICPio2023', 1),
 ('raulprofe', 'Raúl', 'Blázquez Rubio', 'raul@educa.madrid.org', 'Profesor1', 5),
-('maiteprofe', 'María Teresa', 'Blázquez Rubio', 'maite@educa.madrid.org', 'Profesor1', 5),
+('maiteprofe', 'María Teresa', 'Alhama Chapresto', 'maite@educa.madrid.org', 'Profesor1', 5),
+('lauraprofe', 'Laura', 'González Pastor', 'laura@educa.madrid.org', 'Profesor1', 5),
 ('juanprofe', 'Juan', 'Martínez Val', 'juan@educa.madrid.org', 'Profesor1', 3),
 ('javierprofe', 'Javier', 'Sánchez Bosch', 'javier@educa.madrid.org', 'Profesor1', 8);
 
@@ -81,6 +83,7 @@ CREATE TABLE `incidencias`(
     `id_tipo` INT NOT NULL,
     `fecha` VARCHAR(10) NOT NULL,
     `id_aula` int NOT NULL,
+    `img_incidencia` LONGBLOB NULL,
     PRIMARY KEY (`id_incidencia`),
     FOREIGN KEY (`id_profesor`) REFERENCES `profesores`(`id_profesor`),
     FOREIGN KEY (`id_aula`) REFERENCES `aulas`(`id_aula`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -88,6 +91,6 @@ CREATE TABLE `incidencias`(
     FOREIGN KEY (`id_tipo`) REFERENCES `tipos`(`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO `incidencias`(`id_profesor`, `id_grupo`, `asunto`, `descripcion`, `respuesta`, `estado`, `id_tipo`, `fecha`, `id_aula`)VALUES
-(2, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando.', 'TERMINADA', 1,'10/10/2022', 8),
-(2, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz.','Ya se ha asignado un cable a la impreosa. Puedes usarla sin problema.', 'ARCHIVADA', 3,'20/12/2022', 3),
-(2, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales.','', 'EN PROCESO', 4,'20/12/2022', 1);
+(3, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando.', 'TERMINADA', 1,'10/10/2022', 8),
+(3, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz.','Ya se ha asignado un cable a la impreosa. Puedes usarla sin problema.', 'ARCHIVADA', 3,'20/12/2022', 3),
+(3, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales.','', 'EN PROCESO', 4,'20/12/2022', 1);
