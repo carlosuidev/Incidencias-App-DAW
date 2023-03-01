@@ -33,6 +33,12 @@ function eventos() {
         console.log("Sin redirigir a Historial");
     }
 
+    try {
+        document.getElementById("inicioRespLogo").addEventListener("click", irInicio);
+    } catch (error) {
+        console.log("Sin redirigir a Inicio modo responsive");
+    }
+    
     document.getElementById("inicioLogo").addEventListener("click", irInicio);
     document.getElementById("perfilDatos").addEventListener("click", irPerfil);
 

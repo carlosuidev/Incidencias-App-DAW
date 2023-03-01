@@ -26,10 +26,6 @@ aside::-webkit-scrollbar-thumb {
     border-radius: 100rem;
 }
 
-#hamburger{
-    display: none;
-}
-
 @media (min-width: 640px) and (max-width: 1279px){
     .img-btn{
         width: 100% !important;
@@ -102,16 +98,6 @@ aside::-webkit-scrollbar-thumb {
 
     .img-btn{
         display: none !important;
-    }
-}
-
-@media (max-width: 640px) {
-    #hamburger{
-        display: block;
-    }
-
-    #main-content, nav{
-        margin-left: 0px;
     }
 }
 

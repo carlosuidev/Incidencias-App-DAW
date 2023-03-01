@@ -17,10 +17,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
     <title>Sistema de Incidencias del IES Pío Baroja</title>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
 </head>
 
 <body class="bg-teal-900 text-gray-800">
@@ -29,7 +25,7 @@
             <div class="p-16 formulario-entrada" id="fondo-cabecera">
                 <h2 class="font-bold text-center text-white text-5xl">Resolución de incidencias</h2>
             </div>
-            <form class="bg-white rounded p-16 animate__animated animate__fadeInDown">
+            <form class="bg-white rounded p-16">
             <p id="msgError" class="hidden text-sm rounded text-red-700 p-3 mb-8 bg-red-200 border border-red-700 mr-3 ml text-center">Los datos introducidos <b>no son válidos.</b> Inténtalo de nuevo.</p>
                 <img src="svg/logo_baroja.svg" alt="IES PÍO BAROJA" class="mb-5" width="132px">
                 <h3 class=" font-bold text-3xl">Inicia Sesión</h3>

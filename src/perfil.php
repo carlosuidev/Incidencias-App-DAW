@@ -21,9 +21,10 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <body class="bg-gray-100 text-gray-800">
-    <aside class="hidden sm:flex w-full sm:w-56 shadow-md fixed top-0 bottom-0 lg:left-0 pl-5 overflow-y-auto bg-white flex flex-col justify-between">
+    <aside class="lg:flex md:hidden hidden lg:w-56 md:w-full w-full shadow-md fixed top-0 bottom-0 lg:left-0 pl-5 overflow-y-auto bg-white flex flex-col justify-between">
+        <input type="hidden" id="idProfesor" value="<?php echo $_SESSION['id'] ?>">
         <div>
-            <div class="sm:hidden flex pt-8 pr-8 justify-end cursor-pointer" id="close">
+            <div class="lg:hidden md:flex flex pt-8 pr-8 justify-end cursor-pointer" id="close">
                 <img src="svg/iconos/cross.svg" alt="Cerrar">
             </div>
             <div class="flex justify-center pt-3 pb-16 pr-5 pt-6 cursor-pointer" id="inicioLogo">
@@ -61,27 +62,28 @@ if (!isset($_SESSION['id'])) {
             <p class="text-xs mt-4 text-center text-gray-600">DAW &copy;2023</p>
         </div>
     </aside>
-    <nav class="bg-white p-5 ml-0 sm:ml-56">
+    <nav class="bg-white p-5 lg:ml-56 md:m-0 ml-0">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex">
-                <button class="mr-3" id="hamburger"><img src="svg/iconos/hamburger.svg" alt="Abrir menú"></button>
-                <h4 class="text-xl font-semibold sm:block hidden">Bienvenid@ <?php echo $_SESSION["nombre"] ?></h4>
+            <div class="flex items-center">
+                <button class="mr-3" id="hamburger"><img src="svg/iconos/hamburger.svg" class="lg:hidden md:block block" alt="Abrir menú"></button>
+                <button class="lg:hidden md:block block" id="inicioRespLogo"><img src="svg/favicon.svg" alt="Pío"></button>
+                <h4 class="text-xl font-semibold lg:block md:hidden hidden" id="welcome">Bienvenid@ <?php echo $_SESSION["nombre"] ?></h4>
             </div>
             <div>
                 <div class="flex cursor-pointer" id="perfilDatos">
                     <img src="svg/iconos/profile.svg" alt="Usuario" class="mr-3">
                     <div>
-                        <p class="text-sm font-medium flex"><?php echo $_SESSION["nombre"] ?><span class="sm:block hidden ml-1"><?php echo $_SESSION["apellidos"] ?></span></p>
+                        <p class="text-sm font-medium flex"><?php echo $_SESSION["nombre"] ?><span class="ml-1 lg:block md:hidden hidden"><?php echo $_SESSION["apellidos"] ?></span></p>
                         <p class="text-xs text-gray-400"><?php echo $_SESSION["rol"] ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-    <section id="main-content" class="p-8 ml-0 sm:ml-56">
+    <section id="main-content" class="p-3 lg:ml-56 md:m-0 ml-0">
         <div class="container mx-auto">
-            <div class="bg-white rounded p-8">
-                <div class="flex justify-between items-center flex-wrap">
+            <div class="mt-2 bg-white rounded p-8">
+                <div class="flex justify-between items-center flex-wrap gap-5">
                     <div class="flex">
                         <img src="svg/iconos/profile.svg" alt="Perfil" width="42" class="rounded-full mr-3">
                         <div>
@@ -89,6 +91,12 @@ if (!isset($_SESSION['id'])) {
                             <p class="text-sm text-gray-600"><?php echo $_SESSION['rol'] ?></p>
                         </div>
                     </div>
+                    <form class="flex flex-col" action="server/actualizar_foto.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="idProfesor" value="<?php echo $_SESSION['id'] ?>">
+                        <label for="imgperfil" class="text-sm font-semibold">Nueva foto de perfil:</label>
+                        <input type="file" name="imgperfil" id="imgperfil" class="my-2 text-xs" required accept="image/jpeg, image/png">
+                        <input type="submit" value="Guardar foto de perfil" class="cursor-pointer text-xs px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold">
+                    </form>
                 </div>
                 <hr class="border my-5">
                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 p-5">
@@ -101,7 +109,7 @@ if (!isset($_SESSION['id'])) {
                     <p class="font-semibold">Contraseña: <span class="font-normal">********</span></p>
                 </div>
 
-                <form class="bg-white rounded p-16">
+                <form class="bg-white rounded p-5 mx-auto mt-16 lg:w-3/6 md:w-full sm:w-full">
                     <p id="salidaUpdate"></p>
                     <h3 class=" font-bold text-xl">Actualiza tu contraseña</h3>
                     <hr class="my-5">
