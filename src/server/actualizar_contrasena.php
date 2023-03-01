@@ -13,8 +13,8 @@ if ($conn->connect_error) {
 
 try {
     $idProfesor = $_REQUEST['id'];
-    $contrasenaActual = $_REQUEST['contrasenaActual'];
-    $contrasenaNueva = $_REQUEST['contrasenaNueva'];
+    $contrasenaActual = hash('sha256', $_REQUEST['contrasenaActual']);
+    $contrasenaNueva = hash('sha256', $_REQUEST['contrasenaNueva']);
 
     $sql = "SELECT * FROM profesores where pass='$contrasenaActual' and id_profesor=$idProfesor";
     $result = $conn->query($sql);

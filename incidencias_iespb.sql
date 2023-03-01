@@ -29,19 +29,19 @@ CREATE TABLE `profesores`(
     `nombre` VARCHAR(32) NOT NULL,
     `apellidos` VARCHAR(128) NOT NULL,
     `correo` VARCHAR(128) NOT NULL UNIQUE,
-    `pass` VARCHAR(15) NOT NULL,
+    `pass` VARCHAR(1000) NOT NULL,
     `id_departamento` INT NOT NULL,
     `img_perfil` LONGBLOB NULL,
     PRIMARY KEY (`id_profesor`),
     FOREIGN KEY (`id_departamento`) REFERENCES `departamentos`(`id_departamento`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO `profesores`(`usuario`, `nombre`, `apellidos`, `correo`, `pass`, `id_departamento`) VALUES
-('CTIC', 'CTIC', 'Administrador', 'admin@educa.madrid.org', 'CTICPio2023', 1),
-('raulprofe', 'Raúl', 'Blázquez Rubio', 'raul@educa.madrid.org', 'Profesor1', 5),
-('maiteprofe', 'María Teresa', 'Alhama Chapresto', 'maite@educa.madrid.org', 'Profesor1', 5),
-('lauraprofe', 'Laura', 'González Pastor', 'laura@educa.madrid.org', 'Profesor1', 5),
-('juanprofe', 'Juan', 'Martínez Val', 'juan@educa.madrid.org', 'Profesor1', 3),
-('javierprofe', 'Javier', 'Sánchez Bosch', 'javier@educa.madrid.org', 'Profesor1', 8);
+('CTIC', 'CTIC', 'Administrador', 'admin@educa.madrid.org', '6f3152c03520c3d5b3cc170730798ef37f78430855e3facf36ca5e29f5c6a624', 1),
+('raulprofe', 'Raúl', 'Blázquez Rubio', 'raul@educa.madrid.org', 'da0de65b3582f043182ec41eac77fe3910276d4e11a881cec8c9e0996ba7c0fd', 5),
+('maiteprofe', 'María Teresa', 'Alhama Chapresto', 'maite@educa.madrid.org', 'da0de65b3582f043182ec41eac77fe3910276d4e11a881cec8c9e0996ba7c0fd', 5),
+('lauraprofe', 'Laura', 'González Pastor', 'laura@educa.madrid.org', 'da0de65b3582f043182ec41eac77fe3910276d4e11a881cec8c9e0996ba7c0fd', 5),
+('juanprofe', 'Juan', 'Martínez Val', 'juan@educa.madrid.org', 'da0de65b3582f043182ec41eac77fe3910276d4e11a881cec8c9e0996ba7c0fd', 3),
+('javierprofe', 'Javier', 'Sánchez Bosch', 'javier@educa.madrid.org', 'da0de65b3582f043182ec41eac77fe3910276d4e11a881cec8c9e0996ba7c0fd', 8);
 
 
 DROP TABLE IF EXISTS `aulas`;

@@ -16,7 +16,7 @@ try {
     $apellidos = $_REQUEST['apellidos'];
     $usuario = $_REQUEST['usuario'];
     $correo = $_REQUEST['correo'];
-    $contrasena = $_REQUEST['contrasena'];
+    $contrasena = hash('sha256', $_REQUEST['contrasena']);
     $departamento = $_REQUEST['departamento'];
 
     $sql = "INSERT INTO profesores (nombre, apellidos, usuario, correo, pass, id_departamento) values('$nombre', '$apellidos', '$usuario', '$correo', '$contrasena', $departamento)";

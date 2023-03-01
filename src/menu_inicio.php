@@ -7,6 +7,8 @@
     }else if($_SESSION['id'] == 1){
         header("Location: adm_menu_inicio.php");
     }
+
+    include('server/ver_img_perfil.php');
 ?>
 
 <head>
@@ -70,8 +72,15 @@
                 <h4 class="text-xl font-semibold lg:block md:hidden hidden" id="welcome">Bienvenid@ <?php echo $_SESSION["nombre"] ?></h4>
             </div>
             <div>
-                <div class="flex cursor-pointer" id="perfilDatos">
-                    <img src="svg/iconos/profile.svg" alt="Usuario" class="mr-3">
+                <div class="flex cursor-pointer items-center" id="perfilDatos">
+                    <div class="shadow rounded-full overflow-hidden flex items-center w-10 h-10 mr-3 bg-gray-300">
+                        <?php if(isset($contenido)){
+                                    echo "<img src='data:image/jpeg; base64,".base64_encode($contenido)."'>";
+                                }else{
+                                    echo "<img src=''>";
+                                }
+                        ?>
+                    </div>
                     <div>
                         <p class="text-sm font-medium flex"><?php echo $_SESSION["nombre"] ?><span class="ml-1 lg:block md:hidden hidden"><?php echo $_SESSION["apellidos"] ?></span></p>
                         <p class="text-xs text-gray-400"><?php echo $_SESSION["rol"] ?></p>

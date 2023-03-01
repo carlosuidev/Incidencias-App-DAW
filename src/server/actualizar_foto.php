@@ -13,14 +13,24 @@ if ($conn->connect_error) {
 
 try {
     $idProfesor = $_REQUEST['idProfesor'];
-    $img = file_get_contents($_FILES["imgperfil"]["name"]);
+    $imgTamanyo = $_FILES["imgperfil"]['size'];
+    $imgSubir = fopen($_FILES["imgperfil"]['tmp_name'], 'r');
+    $image = $_FILES['imgperfil']['tmp_name']; 
+    $imgContent = addslashes(file_get_contents($image)); 
     
-    $upd = "UPDATE profesores SET img_perfil='$img' WHERE id_profesor=$idProfesor";
-    if ($conn->query($upd) === TRUE) {
-        echo "bien";
-    } else {
-        echo "mal";
+    if($imgTamanyo <= 10485760){
+        $upd = "UPDATE profesores SET img_perfil='$imgContent' WHERE id_profesor=$idProfesor";
+        if ($conn->query($upd) === TRUE) {
+            header('Location: ../perfil.php');
+        }else{
+            header('Location: ../index.php');
+        }
+    }else{
+        header('Location: ../index.php');
     }
+    
 } catch (\Throwable $th) {
     echo $th;
 }
+
+?>

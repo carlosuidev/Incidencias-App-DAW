@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
     $usuario = $_REQUEST['usuario'];
-    $contrasena = $_REQUEST['contrasena'];
+    $contrasena = hash('sha256', $_REQUEST['contrasena']);
     $sql = "SELECT * FROM profesores where usuario='$usuario' AND pass='$contrasena'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {

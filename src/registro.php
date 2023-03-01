@@ -60,13 +60,13 @@
                         placeholder="Tu contraseña">
                     <small id="contrasenaAlert" class="hidden text-red-400 mt-1 pl-2">Escriba una contraseña con mínimo una mayúscula y un número</small>
                 </div>
-                <div class="flex flex-col mb-4">
+                <div class="flex flex-col mb-5">
                     <label for="departamento" class="font-semibold">Departamento</label>
                     <select name="departamento" id="departamento" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm">
                     </select>
                 </div>
                 <div class="flex items-baseline">
-                    <input type="checkbox" name="terminos" id="terminos"><label for="terminos" class="text-sm ml-2 text-gray-500">He leído y acepto la <a href="#" class="underline underline-offset-4">Política de privacidad</a> y el <a href="#" class="underline underline-offset-4">tratamiento de datos</a> por parte del IES Pío Baroja</label>
+                    <input type="checkbox" name="terminos" id="terminos"><label for="terminos" class="text-sm ml-2 text-gray-500">He leído y acepto la <a href="politica_privacidad.html" target="_blank" class="underline underline-offset-4">Política de privacidad</a> por parte del IES Pío Baroja</label>
                 </div>
                 <small id="checkAlert" class="hidden text-red-400 mt-1 pl-2">Debes aceptar los términos y condiciones además de la política de privacidad</small>
                 <input type="button" id="registrar" value="Crear cuenta"
