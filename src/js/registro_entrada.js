@@ -181,10 +181,13 @@ function peticionRegistrar() {
 
 function registrarProfesor(){
     if(xhr.readyState == 4 && xhr.status == 200){
-        const inicioSesion = document.getElementById("inicioSesion");
         let respuestaJson = JSON.parse(xhr.responseText);
         if(respuestaJson[0].msg == "guardado"){
-            inicioSesion.style.display = "block";
+            document.getElementById("salidaCorrecta").style.display = "block";
+            document.getElementById("salidaIncorrecta").style.display = "none";
+        }else{
+            document.getElementById("salidaCorrecta").style.display = "none";
+            document.getElementById("salidaIncorrecta").style.display = "block";
         }
     }
 }

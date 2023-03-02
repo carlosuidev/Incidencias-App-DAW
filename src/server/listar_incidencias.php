@@ -22,7 +22,7 @@ try {
         on a.id_aula = i.id_aula
     INNER JOIN grupos g
         on g.id_grupo = i.id_grupo
-    WHERE i.id_profesor = $idProfesor";
+    WHERE i.id_profesor = $idProfesor AND i.estado = 'EN PROCESO' OR i.estado = 'FINALIZADA'";
 
     $result = $conn->query($sql);
     $json = "";

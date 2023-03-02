@@ -31,6 +31,8 @@
                 <h3 class=" font-bold text-3xl">Regístrate</h3>
                 <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Ya tienes cuenta? <a
                         href="index.php" class="font-semibold text-teal-800 hover:text-teal-900">Inicia sesión</a>.</p>
+                <p id="salidaCorrecta" class="hidden w-full mb-8 text-center px-3 py-2 bg-green-200 border text-sm rounded border-teal-800 text-teal-800">Se ha registrado correctamente <a href="index.php" class="font-bold">Inicia sesión</a> para empezar.</p>
+                <p id="salidaIncorrecta" class="hidden w-full mb-8 text-center px-3 py-2 bg-red-200 border text-sm rounded border-red-800 text-red-800">No se ha registrado correctamente</p>
                 <div class="flex grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-5">
                     <div class="lg:col-span-1 md:col-span-1 sm:col-span-3 flex flex-col mb-0.5">
                         <label for="nombre" class="font-semibold">Nombre</label>

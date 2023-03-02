@@ -18,6 +18,10 @@
     animation: aparecerAbajo 1s ease 0s 1 normal forwards;
 }
 
+#fichaCompleta > div{
+	animation: aparecerAbajo 1s ease 0s 1 normal forwards;
+}
+
 @keyframes aparecerAbajo {
 	0% {
 		opacity: 0;
