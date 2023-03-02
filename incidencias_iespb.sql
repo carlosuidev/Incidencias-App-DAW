@@ -83,7 +83,6 @@ CREATE TABLE `incidencias`(
     `id_tipo` INT NOT NULL,
     `fecha` VARCHAR(10) NOT NULL,
     `id_aula` int NOT NULL,
-    `img_incidencia` LONGBLOB NULL,
     PRIMARY KEY (`id_incidencia`),
     FOREIGN KEY (`id_profesor`) REFERENCES `profesores`(`id_profesor`),
     FOREIGN KEY (`id_aula`) REFERENCES `aulas`(`id_aula`) ON DELETE CASCADE ON UPDATE CASCADE,
