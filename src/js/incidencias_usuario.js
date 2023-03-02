@@ -19,7 +19,7 @@ function respuestaIncidencias() {
         let respuestaJson = JSON.parse(xhrIncidencias.responseText);
 
         const listado = document.getElementById("listaIncidencias");
-        console.log(respuestaJson)
+
         if (respuestaJson[0].id != "sin") {
             respuestaJson.forEach(incidencia => {
                 if (incidencia.estado !== "ARCHIVADA") {
