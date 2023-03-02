@@ -14,6 +14,7 @@
     <!--<link href="/dist/output.css" rel="stylesheet">-->
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/entrada.css">
+    <link rel="stylesheet" href="styles/animaciones.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
     <title>Sistema de Incidencias del IES Pío Baroja</title>
@@ -25,11 +26,11 @@
             <div class="p-16 formulario-entrada" id="fondo-cabecera">
                 <h2 class="font-bold text-center text-white text-5xl">Resolución de incidencias</h2>
             </div>
-            <form class="bg-white rounded p-16">
+            <form class="bg-white rounded p-16" id="formularioInicio">
             <p id="msgError" class="hidden text-sm rounded text-red-700 p-3 mb-8 bg-red-200 border border-red-700 mr-3 ml text-center">Los datos introducidos <b>no son válidos.</b> Inténtalo de nuevo.</p>
                 <img src="svg/logo_baroja.svg" alt="IES PÍO BAROJA" class="mb-5" width="132px">
-                <h3 class=" font-bold text-3xl">Inicia Sesión</h3>
-                <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Aún no tienes cuenta? <a href="registro.html" class="font-semibold text-teal-800 hover:text-teal-900">Regístrate</a>.</p>
+                <h3 class=" font-bold text-3xl">Inicia sesión</h3>
+                <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Aún no tienes cuenta? <a href="registro.php" class="font-semibold text-teal-800 hover:text-teal-900">Regístrate</a>.</p>
                 <div class="flex flex-col mb-5">
                     <label for="usuario" class="font-semibold">Nombre de usuario</label>
                     <input type="text" name="usuario" id="usuario" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm" placeholder="Tu nombre de usuario">

@@ -92,4 +92,8 @@ CREATE TABLE `incidencias`(
 INSERT INTO `incidencias`(`id_profesor`, `id_grupo`, `asunto`, `descripcion`, `respuesta`, `estado`, `id_tipo`, `fecha`, `id_aula`)VALUES
 (3, 2, 'No funciona el proyector', 'El proyecto de este aula se queda en negro al encenderlo y no puedo conectarlo con el ordenador.', 'Debes presionar el botón de encendido, durante 5 segundos del mando.', 'TERMINADA', 1,'10/10/2022', 8),
 (3, 5, 'La impresora no tiene cable para conectarse', 'No hay un cable para la impresora que vaya a la luz.','Ya se ha asignado un cable a la impreosa. Puedes usarla sin problema.', 'ARCHIVADA', 3,'20/12/2022', 3),
-(3, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales.','', 'EN PROCESO', 4,'20/12/2022', 1);
+(3, 1, 'No puedo acceder a educamadrid', 'Cuando intento entrar a educamadrid no reconoce mis creendenciales.','', 'EN PROCESO', 4,'20/12/2022', 1),
+(2, 18, 'Teclado sin algunas teclas', 'El teclado del profesor en este aula le faltan varias teclas.','', 'EN PROCESO', 1,'22/12/2022', 18),
+(4, 15, 'Altavoces sin sonido', 'No funcionan bien los altavoces del aula. En el ordenador aparecen como conectados pero no dan sonido.','', 'EN PROCESO', 1,'9/1/2023', 10),
+(4, 15, 'Sin internet', 'Ningún ordenador por cable tiene internet en el aula pero los que usan Wifi sí.','Ya se ha solucionado el problema, era un fallo en toda la red.', 'TERMINADA', 3,'15/1/2023', 17),
+(2, 6, 'PC sin señal de vídeo', 'El PC número 5, el primero que se encuentra al entrar en el aula, no da señal de vídeo.','Se ha cambiado el cable HDMI del PC que no daba señal.', 'TERMINADA', 3,'22/2/2023', 6);

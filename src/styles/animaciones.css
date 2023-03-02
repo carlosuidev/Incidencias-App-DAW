@@ -1,0 +1,63 @@
+#formularioInicio,#formularioRegistro{
+    animation: aparecerArriba 1s ease 0s 1 normal forwards;
+}
+
+@keyframes aparecerArriba {
+	0% {
+		opacity: 0;
+		transform: translateY(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+#main-content{
+    animation: aparecerAbajo 1s ease 0s 1 normal forwards;
+}
+
+@keyframes aparecerAbajo {
+	0% {
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+#cajaTiempo{
+    animation: aparecerDerecha 1s ease 0s 1 normal forwards;
+}
+
+@keyframes aparecerDerecha {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+#nuevaIncidencia, #incidenciasActivas, #historialIncidencias, #educamadridIncidencias, #incidencias{
+    animation: fadeFrente 1s ease 0s 1 normal forwards;
+}
+
+@keyframes fadeFrente {
+	0% {
+		opacity: 0;
+		transform: scale(0.6);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

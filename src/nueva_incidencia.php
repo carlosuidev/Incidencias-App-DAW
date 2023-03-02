@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link href="/dist/output.css" rel="stylesheet">-->
     <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/animaciones.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
     <script
@@ -49,7 +50,7 @@
             </div>
         </div>
         <div class="pb-8 pr-8 pt-32">
-            <div class="p-3 bg-gray-800 rounded mb-5 flex justify-center items-center rounded-lg">
+            <div class="p-3 bg-gray-800 rounded mb-5 flex justify-center items-center rounded-lg" id="cajaTiempo">
                 <img id="iconoTiempo" width="42">
                 <div class="ml-3">
                     <p id="tiempoNum" class="text-white text-xl font-light"></p>

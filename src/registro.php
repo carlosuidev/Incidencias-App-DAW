@@ -1,12 +1,20 @@
 <!doctype html>
 <html>
-
+<?php 
+    session_start();
+    if(isset($_SESSION['id']) && $_SESSION['id'] == 1){
+        header("Location: adm_menu_inicio.php");
+    }else if(isset($_SESSION['id'])){
+        header("Location: menu_inicio.php");
+    }
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link href="/dist/output.css" rel="stylesheet">-->
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/entrada.css">
+    <link rel="stylesheet" href="styles/animaciones.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon">
     <title>Sistema de Incidencias del IES Pío Baroja</title>
@@ -18,7 +26,7 @@
             <div class="p-16 formulario-entrada" id="fondo-cabecera">
                 <h2 class="font-bold text-center text-white text-5xl">Resolución de incidencias</h2>
             </div>
-            <form class="bg-white rounded p-16">
+            <form class="bg-white rounded p-16" id="formularioRegistro">
                 <img src="svg/logo_baroja.svg" alt="IES PÍO BAROJA" class="mb-5" width="132px">
                 <h3 class=" font-bold text-3xl">Regístrate</h3>
                 <p class="mb-8 mt-3">Consulta y resuelve tus incidencias que ocurran en el centro. ¿Ya tienes cuenta? <a
