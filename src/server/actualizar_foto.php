@@ -18,7 +18,7 @@ try {
     $image = $_FILES['imgperfil']['tmp_name']; 
     $imgContent = addslashes(file_get_contents($image)); 
     
-    if($imgTamanyo <= 10485760){
+    if($imgTamanyo <= 998164){
         $upd = "UPDATE profesores SET img_perfil='$imgContent' WHERE id_profesor=$idProfesor";
         if ($conn->query($upd) === TRUE) {
             header('Location: ../perfil.php');
@@ -30,7 +30,7 @@ try {
     }
     
 } catch (\Throwable $th) {
-    echo $th;
+    echo $th." $imgTamanyo ";
 }
 
 ?>

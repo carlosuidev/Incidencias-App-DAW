@@ -1,0 +1,23 @@
+// ADMINISTRADOR
+
+Usuario: CTIC
+Contraseña: CTICPio2023
+
+
+
+// USUARIOS
+
+Usuario: maiteprofe
+Contraseña: Profesor1
+
+Usuario: raulprofe
+Contraseña: Profesor1
+
+Usuario: lauraprofe
+Contraseña: Profesor1
+
+Usuario: javierprofe
+Contraseña: Profesor1
+
+Usuario: juanprofe
+Contraseña: Profesor1

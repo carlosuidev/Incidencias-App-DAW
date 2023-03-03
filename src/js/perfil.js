@@ -7,6 +7,7 @@ function iniciarEventos() {
     peticionDatosProfesor();
     document.getElementById("contrasenaNueva").addEventListener("input", validarContrasena);
     document.getElementById("actualizar").addEventListener("click", peticionActualizar);
+    document.getElementById("imgperfil").addEventListener("change", comprobarImagen);
 }
 
 function peticionDatosProfesor(){
@@ -73,5 +74,27 @@ function actualizarContrasena(){
             salidaUpd.setAttribute("class", "text-center text-xs rounded mb-5 p-2 bg-red-200 border border-red-800 text-red-800");
             salidaUpd.textContent = "Ha ocurrido un error en el sistema. Prueba otra vez";
         }
+    }
+}
+
+function comprobarImagen(){
+    const imagen = document.getElementById("imgperfil");
+    const msgImagen = document.getElementById("msgImagen");
+    const fotobtn = document.getElementById("fotobtn");
+    msgImagen.style.color = "red";
+    msgImagen.style.marginTop = "0.5rem";
+
+    if(imagen.files[0].size > 998164){
+        msgImagen.display =  "block";
+        msgImagen.textContent = "Utilice una imagen de menor tamaño"
+        fotobtn.disabled = true;
+        fotobtn.style.cursor = "none";
+        fotobtn.style.opacity = "75%";
+    }else{
+        msgImagen.display =  "none";
+        msgImagen.textContent = "";
+        fotobtn.disabled = false;
+        fotobtn.style.cursor = "pointer";
+        fotobtn.style.opacity = "100%";
     }
 }

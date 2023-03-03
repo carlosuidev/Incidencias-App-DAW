@@ -61,7 +61,7 @@ function mostrarGrupos(){
 function validarAsunto(){
     const asunto = document.getElementById("asunto");
     const asuntoAlert = document.getElementById("asuntoAlert");
-    if(/^[A-Za-z0-9áéíóúÁÉÍÓÚÑñ.-ªº ]*$/.test(asunto.value) && (asunto.value).length<=64 && (asunto.value).length>10){
+    if(/^[A-Za-z0-9áéíóúÁÉÍÓÚÑñ.,()-ªº ]*$/.test(asunto.value) && (asunto.value).length<=64 && (asunto.value).length>10){
         asuntoAlert.style.display = "none";
         asunto.style.border = "1px solid green";
         return false;

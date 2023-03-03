@@ -112,8 +112,9 @@ include('server/ver_img_perfil.php');
                     <form class="flex flex-col" action="server/actualizar_foto.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="idProfesor" value="<?php echo $_SESSION['id'] ?>">
                         <label for="imgperfil" class="text-sm font-semibold">Nueva foto de perfil:</label>
-                        <input type="file" name="imgperfil" id="imgperfil" class="my-2 text-xs" required accept="image/jpeg, image/png">
-                        <input type="submit" value="Guardar foto de perfil" class="cursor-pointer text-xs px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold">
+                        <input type="file" name="imgperfil" id="imgperfil" class="mt-2 text-xs w-full" required accept="image/jpeg, image/png">
+                        <small id="msgImagen"></small>
+                        <input type="submit" id="fotobtn" value="Guardar foto de perfil" class="mt-3 cursor-pointer text-xs px-3 py-2 w-full bg-teal-800 hover:bg-teal-900 transition ease-in rounded text-white font-semibold">
                     </form>
                 </div>
                 <hr class="border my-5">
