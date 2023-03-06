@@ -140,7 +140,7 @@ function mostrarTiempo(){
                     break;
 
                     default:
-                    image.src = '';
+                        iconoTiempoResultado = './svg/tiempo/nublado.svg';
                 }
                 
                 document.getElementById("iconoTiempo").setAttribute("src", iconoTiempoResultado);

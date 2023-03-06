@@ -22,7 +22,7 @@ function respuestaIncidencias() {
         if (respuestaJson[0].id != "sin") {
             respuestaJson.forEach(incidencia => {
                 const contenedor = document.createElement("div");
-                contenedor.setAttribute("class", "flex flex-col justify-between shadow hover:shadow-xl duration-300 rounded bg-white p-8 flex flex-col flex-wrap justify-between");
+                contenedor.setAttribute("class", "flex flex-col justify-between shadow hover:shadow-xl duration-300 rounded bg-white p-8");
                 const principal = document.createElement("div");
                 
                 // CABECERA
@@ -70,7 +70,7 @@ function respuestaIncidencias() {
                 respuesta.setAttribute("method", "POST");
                 respuesta.innerHTML = `
                 <input type='hidden' name='incidencia' id='incidencia' value='${incidencia.id}'/>
-                <textarea name='respuesta' id='respuesta' required id="descripcion" placeholder="Respuesta a la incidencia" cols="30" rows="5" class="bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm"></textarea>
+                <textarea name='respuesta' id='respuesta' required placeholder='Respuesta a la incidencia' cols='30' rows='5' class='bg-gray-100 p-3 rounded w-full border mt-2 border border-gray-300 text-sm'></textarea>
                 <input type='submit' value="Responder" class='mt-3 w-full bg-teal-800 duration-300 cursor-pointer hover:bg-teal-900 text-white rounded font-semibold py-2'>
                 `;
                 contenedor.appendChild(respuesta);
