@@ -1,5 +1,3 @@
-<!doctype html>
-<html>
 <?php
     session_start();
     if (!isset($_SESSION['id'])) {
@@ -8,6 +6,8 @@
         header("Location: menu_inicio.php");
     }
 ?>
+<!doctype html>
+<html>
 
 <head>
     <meta charset="UTF-8">

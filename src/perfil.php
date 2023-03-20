@@ -1,5 +1,3 @@
-<!doctype html>
-<html>
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
@@ -11,6 +9,8 @@ if (!isset($_SESSION['id'])) {
 include('server/ver_img_perfil.php');
 
 ?>
+<!doctype html>
+<html>
 
 <head>
     <meta charset="UTF-8">

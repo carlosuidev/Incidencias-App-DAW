@@ -148,7 +148,7 @@ function ficha() {
                 }
                 contenedor.appendChild(principal);
 
-                window.location.href = "http://localhost/incidencias-app-daw/src/historial.php#fichaCompleta";
+                window.location.href = "#fichaCompleta";
         });
     }
 }

@@ -1,5 +1,3 @@
-<!doctype html>
-<html>
 <?php 
     session_start();
     if(isset($_SESSION['id']) && $_SESSION['id'] == 1){
@@ -8,6 +6,9 @@
         header("Location: menu_inicio.php");
     }
 ?>
+<!doctype html>
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
